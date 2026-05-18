@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { LocalBusinessJsonLd } from "@/components/local-business-jsonld";
+import { SITE } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,21 +17,21 @@ const playfair = Playfair_Display({
   weight: ["400", "600", "700"],
 });
 
-const siteUrl = "https://bernallandscape.com";
+const defaultTitle =
+  "Bernal Landscape Management, LLC — Top Rated Landscaper — Grand Rapids, Michigan";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title:
-    "Bernal Landscape Management, LLC — Top Rated Landscaper — Grand Rapids, Michigan",
-  description:
-    "Family-owned landscape design, hardscaping, and property care serving Grand Rapids for over 15 years.",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: defaultTitle,
+    template: "%s | Bernal Landscape Management",
+  },
+  description: SITE.description,
   openGraph: {
-    title:
-      "Bernal Landscape Management, LLC — Top Rated Landscaper — Grand Rapids, Michigan",
-    description:
-      "Family-owned landscape design, hardscaping, and property care serving Grand Rapids for over 15 years.",
-    url: siteUrl,
-    siteName: "Bernal Landscape Management, LLC",
+    title: defaultTitle,
+    description: SITE.description,
+    url: SITE.url,
+    siteName: SITE.name,
     locale: "en_US",
     type: "website",
     images: [
@@ -43,10 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Bernal Landscape Management, LLC — Top Rated Landscaper — Grand Rapids, Michigan",
-    description:
-      "Family-owned landscape design, hardscaping, and property care serving Grand Rapids for over 15 years.",
+    title: defaultTitle,
+    description: SITE.description,
   },
 };
 
@@ -59,6 +59,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         {children}
+        <LocalBusinessJsonLd />
       </body>
     </html>
   );

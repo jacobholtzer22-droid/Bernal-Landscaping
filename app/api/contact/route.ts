@@ -1,13 +1,39 @@
 import { NextResponse } from "next/server";
 
 /**
- * TODO: Wire up Resend (or similar) to deliver quote requests to salvador@bernallandscape.com
+ * Contact form submission handler.
+ *
+ * Accepts:
+ *   - application/json (used by the homepage QuoteForm)
+ *   - multipart/form-data (used by /contact when a photo is attached)
+ *
+ * TODO: Wire up Resend (or similar) to deliver quote requests + any photo
+ *       attachment to salvador@bernallandscape.com. Store/forward the photo
+ *       via Resend attachments, S3, UploadThing, etc.
  */
 export async function POST(request: Request) {
   try {
-    await request.json().catch(() => ({}));
+    const contentType = request.headers.get("content-type") ?? "";
+
+    if (contentType.includes("multipart/form-data")) {
+      const fd = await request.formData();
+      const _payload = {
+        name: String(fd.get("name") ?? ""),
+        email: String(fd.get("email") ?? ""),
+        phone: String(fd.get("phone") ?? ""),
+        message: String(fd.get("message") ?? ""),
+        photo: fd.get("photo") instanceof File ? (fd.get("photo") as File) : null,
+      };
+      // TODO: forward _payload (and photo) to email/storage provider
+      void _payload;
+    } else {
+      const _json = await request.json().catch(() => ({}));
+      // TODO: forward _json to email provider
+      void _json;
+    }
+
+    return NextResponse.json({ ok: true }, { status: 200 });
   } catch {
-    /* ignore malformed body */
+    return NextResponse.json({ ok: false }, { status: 500 });
   }
-  return NextResponse.json({ ok: true }, { status: 200 });
 }

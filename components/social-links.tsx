@@ -1,5 +1,6 @@
 import { Facebook, Instagram } from "lucide-react";
 import { siYelp } from "simple-icons";
+import { SITE } from "@/lib/site";
 
 function YelpIcon({ className }: { className?: string }) {
   return (
@@ -24,7 +25,7 @@ export function SocialLinks({ className, linkClassName }: SocialLinksProps) {
   return (
     <div className={`flex items-center gap-1 ${className ?? ""}`}>
       <a
-        href="https://www.facebook.com/"
+        href={SITE.socials.facebook}
         target="_blank"
         rel="noopener noreferrer"
         className={baseLink}
@@ -33,7 +34,7 @@ export function SocialLinks({ className, linkClassName }: SocialLinksProps) {
         <Facebook className={iconClass} strokeWidth={1.75} />
       </a>
       <a
-        href="https://www.instagram.com/"
+        href={SITE.socials.instagram}
         target="_blank"
         rel="noopener noreferrer"
         className={baseLink}
@@ -42,7 +43,7 @@ export function SocialLinks({ className, linkClassName }: SocialLinksProps) {
         <Instagram className={iconClass} strokeWidth={1.75} />
       </a>
       <a
-        href="https://www.yelp.com/"
+        href={SITE.socials.yelp}
         target="_blank"
         rel="noopener noreferrer"
         className={baseLink}
