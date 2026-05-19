@@ -130,24 +130,41 @@ export default function Home() {
             </div>
 
             <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {SERVICES.map(({ slug, title, description, Icon }) => (
+              {SERVICES.map(({ slug, title, description, heroImage, Icon }) => (
                 <Link
                   key={slug}
                   href={`/services/${slug}`}
-                  className="group flex flex-col rounded-2xl border border-charcoal/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-forest hover:shadow-md"
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-charcoal/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-forest hover:shadow-md"
                 >
-                  <Icon
-                    className="h-7 w-7 text-forest transition-colors group-hover:text-terracotta"
-                    strokeWidth={1.5}
-                    aria-hidden
-                  />
-                  <h3 className="mt-4 font-semibold text-charcoal">{title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal/70">
-                    {description}
-                  </p>
-                  <span className="mt-4 text-sm font-semibold text-forest transition-colors group-hover:text-terracotta">
-                    Learn more →
-                  </span>
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-charcoal/5">
+                    <Image
+                      src={heroImage}
+                      alt={`${title} project by Bernal Landscape Management`}
+                      fill
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      aria-hidden
+                    />
+                    <div className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/95 shadow-sm">
+                      <Icon
+                        className="h-5 w-5 text-forest transition-colors group-hover:text-terracotta"
+                        strokeWidth={1.75}
+                        aria-hidden
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-semibold text-charcoal">{title}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal/70">
+                      {description}
+                    </p>
+                    <span className="mt-4 text-sm font-semibold text-forest transition-colors group-hover:text-terracotta">
+                      Learn more →
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>

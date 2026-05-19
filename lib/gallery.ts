@@ -268,7 +268,7 @@ export const GALLERY: GalleryImage[] = [
 
 // Featured photos curated for hero/section use elsewhere on the site.
 export const FEATURED = {
-  hero: "/gallery/20250411_172500.jpg",
+  hero: "/gallery/FB_IMG_1771944411767.jpg",
   about: "/gallery/20250411_172601.jpg",
   servicesIndex: "/gallery/20250411_172615.jpg",
   gallery: "/gallery/20250411_172838.jpg",
