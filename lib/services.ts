@@ -35,7 +35,6 @@ const HERO_HARDSCAPE = "/gallery/20250411_172601.jpg";
 const HERO_PATIO = "/gallery/20250411_172838.jpg";
 const HERO_LAWN = "/gallery/FB_IMG_1758730003165.jpg";
 const HERO_DETAIL = "/gallery/20250411_172615.jpg";
-const HERO_PROJECT = "/gallery/20250411_172928.jpg";
 const HERO_SOD = "/gallery/FB_IMG_1758729997354.jpg";
 const HERO_TREE = "/gallery/FB_IMG_1771690358929.jpg";
 const HERO_TREE_REMOVAL = "/gallery/FB_IMG_1758730009531.jpg";
