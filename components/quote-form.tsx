@@ -21,6 +21,7 @@ export function QuoteForm({ anchorId = "quote-form" }: QuoteFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [service, setService] = useState("");
   const [message, setMessage] = useState("");
   const [smsConsent, setSmsConsent] = useState(false);
@@ -40,6 +41,7 @@ export function QuoteForm({ anchorId = "quote-form" }: QuoteFormProps) {
           name,
           email,
           phone,
+          address,
           service,
           message,
           smsConsent,
@@ -50,6 +52,7 @@ export function QuoteForm({ anchorId = "quote-form" }: QuoteFormProps) {
         setName("");
         setEmail("");
         setPhone("");
+        setAddress("");
         setService("");
         setMessage("");
         setSmsConsent(false);
@@ -174,6 +177,26 @@ export function QuoteForm({ anchorId = "quote-form" }: QuoteFormProps) {
               ))}
             </select>
           </div>
+        </div>
+
+        <div>
+          <label htmlFor="quote-address" className={labelClass}>
+            Property Address <span className="text-terracotta">*</span>
+          </label>
+          <input
+            id="quote-address"
+            name="address"
+            type="text"
+            required
+            autoComplete="street-address"
+            placeholder="123 Main St, Grand Rapids, MI 49503"
+            value={address}
+            onChange={(e) => {
+              setAddress(e.target.value);
+              clearStatus();
+            }}
+            className={inputClass}
+          />
         </div>
 
         <div>

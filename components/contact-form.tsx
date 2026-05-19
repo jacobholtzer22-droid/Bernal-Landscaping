@@ -21,6 +21,7 @@ export function ContactForm({ anchorId = "quote-form" }: ContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [service, setService] = useState("");
   const [message, setMessage] = useState("");
   const [smsConsent, setSmsConsent] = useState(false);
@@ -55,6 +56,7 @@ export function ContactForm({ anchorId = "quote-form" }: ContactFormProps) {
             name,
             email,
             phone,
+            address,
             service,
             message,
             smsConsent,
@@ -67,6 +69,7 @@ export function ContactForm({ anchorId = "quote-form" }: ContactFormProps) {
         setName("");
         setEmail("");
         setPhone("");
+        setAddress("");
         setService("");
         setMessage("");
         setSmsConsent(false);
@@ -193,6 +196,26 @@ export function ContactForm({ anchorId = "quote-form" }: ContactFormProps) {
               ))}
             </select>
           </div>
+        </div>
+
+        <div>
+          <label htmlFor="contact-address" className={labelClass}>
+            Property Address <span className="text-terracotta">*</span>
+          </label>
+          <input
+            id="contact-address"
+            name="address"
+            type="text"
+            required
+            autoComplete="street-address"
+            placeholder="123 Main St, Grand Rapids, MI 49503"
+            value={address}
+            onChange={(e) => {
+              setAddress(e.target.value);
+              clearStatus();
+            }}
+            className={inputClass}
+          />
         </div>
 
         <div>

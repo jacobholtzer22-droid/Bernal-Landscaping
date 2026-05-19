@@ -21,6 +21,7 @@ export async function POST(request: Request) {
         name: String(fd.get("name") ?? ""),
         email: String(fd.get("email") ?? ""),
         phone: String(fd.get("phone") ?? ""),
+        address: String(fd.get("address") ?? ""),
         service: String(fd.get("service") ?? ""),
         message: String(fd.get("message") ?? ""),
         smsConsent:

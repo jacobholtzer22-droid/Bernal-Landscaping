@@ -42,7 +42,8 @@ export const SITE = {
     yelp: "https://yelp.com/biz/bernal-landscape-management-wyoming",
     google: "https://www.google.com/maps/place/Bernal+Landscape+Management,+LLC",
   },
-  paymentUrl: "https://square.link/u/XE6McTQI?src=sms",
+  paymentUrl:
+    "https://checkout.square.site/merchant/HXTQ8JP56DGP6/checkout/77PXFDMBM65DFI6QLILU6EAL?src=sms",
   bbb: { accredited: true, rating: "A+" },
   founded: 2010,
 } as const;
