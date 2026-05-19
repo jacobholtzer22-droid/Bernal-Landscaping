@@ -36,8 +36,8 @@ export default function ContactPage() {
       <main>
         <PageHero
           title="Contact Us"
-          eyebrow="Get in Touch"
-          description="Tell us about your project. We respond within one business day, and consultations are always free."
+          eyebrow="Get a Quote"
+          description="Tell us about your project and we'll get right back to you. Free, no-obligation estimates across Grand Rapids and West Michigan."
           image={FEATURED.contact}
           imageAlt="Bernal Landscape finished project detail"
           crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
@@ -52,12 +52,12 @@ export default function ContactPage() {
                   {SITE.name}
                 </p>
                 <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-4xl">
-                  We&apos;d Love to Hear From You
+                  Family Owned &amp; Operated
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
-                  Call, email, or send a message — whatever&apos;s easiest. If you
-                  have photos of the project area, attach them and we&apos;ll get
-                  back to you faster.
+                  Call, email, or send us a message — whatever&apos;s easiest.
+                  If you have photos of the project area, attach them and
+                  we&apos;ll get right back to you.
                 </p>
 
                 <ul className="mt-10 space-y-6 text-charcoal/90">
@@ -150,7 +150,7 @@ export default function ContactPage() {
 
               {/* Form */}
               <div>
-                <ContactForm />
+                <ContactForm anchorId="quote-form" />
               </div>
             </div>
           </div>

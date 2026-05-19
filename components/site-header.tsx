@@ -138,7 +138,7 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
+          <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
             {/* Home */}
             <Link
               href="/"
@@ -241,7 +241,7 @@ export function SiteHeader() {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-3 lg:hidden">
+          <div className="flex items-center gap-3 md:hidden">
             <Link
               href="/contact"
               onClick={closeMobile}
@@ -267,13 +267,27 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {mobileOpen ? (
+      <div
+        className={`fixed inset-0 z-[60] md:hidden ${
+          mobileOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+        aria-hidden={!mobileOpen}
+      >
+        <div
+          className={`absolute inset-0 bg-charcoal/60 backdrop-blur-sm transition-opacity duration-300 ${
+            mobileOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={closeMobile}
+        />
+
         <div
           id="mobile-nav"
-          className="fixed inset-0 z-[60] flex flex-col bg-forest lg:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
+          className={`absolute right-0 top-0 flex h-full w-[85%] max-w-sm flex-col bg-forest shadow-2xl transition-transform duration-300 ease-out ${
+            mobileOpen ? "translate-x-0" : "translate-x-full"
+          }`}
         >
           <div className="flex justify-end p-4">
             <button
@@ -352,7 +366,7 @@ export function SiteHeader() {
             </div>
           </nav>
         </div>
-      ) : null}
+      </div>
     </header>
   );
 }

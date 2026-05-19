@@ -43,6 +43,7 @@ const HERO_LEAVES = "/gallery/FB_IMG_1771690390552.jpg";
 const HERO_DRAIN = "/gallery/FB_IMG_1771690408247.jpg";
 const HERO_FRENCH = "/gallery/FB_IMG_1771944411767.jpg";
 const HERO_MULCH = "/gallery/FB_IMG_1754343316006.jpg";
+const HERO_SNOW = "/gallery/snow-plowing.jpg";
 
 export const SERVICES: Service[] = [
   {
@@ -211,7 +212,7 @@ export const SERVICES: Service[] = [
       "Commercial-grade equipment, insured operators",
     ],
     Icon: Snowflake,
-    heroImage: HERO_PROJECT,
+    heroImage: HERO_SNOW,
   },
   {
     slug: "sod-installation",

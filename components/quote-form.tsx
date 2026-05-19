@@ -1,15 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import { CheckCircle2 } from "lucide-react";
+import { SERVICES } from "@/lib/services";
 
-export function QuoteForm() {
+const SERVICE_OPTIONS = [
+  ...SERVICES.map((s) => ({ value: s.slug, label: s.shortTitle })),
+  { value: "not-sure", label: "Not Sure / Multiple Services" },
+];
+
+type QuoteFormProps = {
+  /** Anchor id on the surrounding wrapper. Useful for /contact#quote-form links. */
+  anchorId?: string;
+};
+
+export function QuoteForm({ anchorId = "quote-form" }: QuoteFormProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [service, setService] = useState("");
   const [message, setMessage] = useState("");
+  const [smsConsent, setSmsConsent] = useState(false);
+
+  function clearStatus() {
+    if (status !== "idle") setStatus("idle");
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,14 +36,23 @@ export function QuoteForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, message }),
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          service,
+          message,
+          smsConsent,
+        }),
       });
       if (res.ok) {
         setStatus("success");
         setName("");
         setEmail("");
         setPhone("");
+        setService("");
         setMessage("");
+        setSmsConsent(false);
       } else {
         setStatus("error");
       }
@@ -34,106 +61,176 @@ export function QuoteForm() {
     }
   }
 
-  return (
-    <div className="rounded-2xl border border-forest/10 bg-white p-8 shadow-sm">
-      <h3 className="font-serif text-2xl font-semibold text-forest md:text-3xl">
-        Get a Free Quote
-      </h3>
+  const labelClass =
+    "mb-1.5 block text-xs font-semibold uppercase tracking-wider text-charcoal/65";
+  const inputClass =
+    "w-full rounded-xl border border-charcoal/15 bg-white px-4 py-3 text-charcoal outline-none ring-forest/30 transition-all placeholder:text-charcoal/40 focus:border-forest focus:bg-white focus:ring-2";
 
-      <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-        <div>
-          <label htmlFor="quote-name" className="sr-only">
-            Name
-          </label>
-          <input
-            id="quote-name"
-            name="name"
-            type="text"
-            required
-            autoComplete="name"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-              if (status !== "idle") setStatus("idle");
-            }}
-            className="w-full rounded-xl border border-charcoal/15 bg-cream px-4 py-3 text-charcoal outline-none ring-forest/30 transition-shadow placeholder:text-charcoal/40 focus:border-forest focus:ring-2"
-          />
+  return (
+    <div
+      id={anchorId}
+      className="scroll-mt-28 overflow-hidden rounded-3xl border border-forest/15 bg-white shadow-xl"
+    >
+      <div className="bg-gradient-to-r from-forest to-forest-dark px-8 py-7 text-cream md:px-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
+          Contact Us
+        </p>
+        <h3 className="mt-2 font-serif text-2xl font-semibold md:text-3xl">
+          Get a Quote
+        </h3>
+        <p className="mt-2 text-sm text-cream/85">
+          Tell us about your project — we&apos;ll get right back to you.
+        </p>
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-5 bg-cream px-8 py-8 md:px-10 md:py-10"
+      >
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label htmlFor="quote-name" className={labelClass}>
+              Name <span className="text-terracotta">*</span>
+            </label>
+            <input
+              id="quote-name"
+              name="name"
+              type="text"
+              required
+              autoComplete="name"
+              placeholder="Your full name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+                clearStatus();
+              }}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label htmlFor="quote-email" className={labelClass}>
+              Email <span className="text-terracotta">*</span>
+            </label>
+            <input
+              id="quote-email"
+              name="email"
+              type="email"
+              required
+              autoComplete="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                clearStatus();
+              }}
+              className={inputClass}
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="quote-email" className="sr-only">
-            Email
-          </label>
-          <input
-            id="quote-email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              if (status !== "idle") setStatus("idle");
-            }}
-            className="w-full rounded-xl border border-charcoal/15 bg-cream px-4 py-3 text-charcoal outline-none ring-forest/30 transition-shadow placeholder:text-charcoal/40 focus:border-forest focus:ring-2"
-          />
+
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label htmlFor="quote-phone" className={labelClass}>
+              Phone <span className="text-terracotta">*</span>
+            </label>
+            <input
+              id="quote-phone"
+              name="phone"
+              type="tel"
+              required
+              autoComplete="tel"
+              placeholder="(616) 555-0123"
+              value={phone}
+              onChange={(e) => {
+                setPhone(e.target.value);
+                clearStatus();
+              }}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label htmlFor="quote-service" className={labelClass}>
+              Service Type
+            </label>
+            <select
+              id="quote-service"
+              name="service"
+              value={service}
+              onChange={(e) => {
+                setService(e.target.value);
+                clearStatus();
+              }}
+              className={`${inputClass} appearance-none bg-[length:16px_16px] bg-[right_1rem_center] bg-no-repeat pr-10`}
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%231A1A1A' opacity='0.6'><path fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z' clip-rule='evenodd'/></svg>\")",
+              }}
+            >
+              <option value="">Select a service…</option>
+              {SERVICE_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
+
         <div>
-          <label htmlFor="quote-phone" className="sr-only">
-            Phone
-          </label>
-          <input
-            id="quote-phone"
-            name="phone"
-            type="tel"
-            required
-            autoComplete="tel"
-            placeholder="Phone"
-            value={phone}
-            onChange={(e) => {
-              setPhone(e.target.value);
-              if (status !== "idle") setStatus("idle");
-            }}
-            className="w-full rounded-xl border border-charcoal/15 bg-cream px-4 py-3 text-charcoal outline-none ring-forest/30 transition-shadow placeholder:text-charcoal/40 focus:border-forest focus:ring-2"
-          />
-        </div>
-        <div>
-          <label htmlFor="quote-message" className="sr-only">
+          <label htmlFor="quote-message" className={labelClass}>
             Message
           </label>
           <textarea
             id="quote-message"
             name="message"
-            required
             rows={5}
-            placeholder="Message"
+            placeholder="Tell us about your project, timeline, and any details you'd like us to know."
             value={message}
             onChange={(e) => {
               setMessage(e.target.value);
-              if (status !== "idle") setStatus("idle");
+              clearStatus();
             }}
-            className="w-full resize-y rounded-xl border border-charcoal/15 bg-cream px-4 py-3 text-charcoal outline-none ring-forest/30 transition-shadow placeholder:text-charcoal/40 focus:border-forest focus:ring-2"
+            className={`${inputClass} resize-y`}
           />
         </div>
 
+        <label className="flex cursor-pointer items-start gap-3 rounded-xl bg-white/60 px-4 py-3 text-xs leading-relaxed text-charcoal/70 transition hover:bg-white">
+          <input
+            type="checkbox"
+            checked={smsConsent}
+            onChange={(e) => setSmsConsent(e.target.checked)}
+            className="mt-0.5 h-4 w-4 shrink-0 rounded border-charcoal/30 text-forest focus:ring-forest/30"
+          />
+          <span>
+            By checking this box and providing your phone number, you consent
+            to receive SMS messages from Bernal Landscape Management. Message
+            frequency may vary. Standard message and data rates may apply.
+            Reply STOP to opt out. Reply HELP for help. Consent is not a
+            condition of purchase.
+          </span>
+        </label>
+
         {status === "success" && (
-          <p className="rounded-xl bg-forest/10 px-4 py-3 text-sm font-medium text-forest">
-            Thanks — your message was sent. We&apos;ll get back to you soon.
-          </p>
+          <div className="flex items-start gap-3 rounded-xl bg-forest/10 px-4 py-3 text-sm font-medium text-forest">
+            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" aria-hidden />
+            <span>
+              Thanks for contacting us! We&apos;ll get right back to you.
+            </span>
+          </div>
         )}
         {status === "error" && (
           <p className="rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-800">
-            Something went wrong. Please try again or call us directly.
+            Oops, there was an error sending your message. Please try again
+            later or call us directly.
           </p>
         )}
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full rounded-xl bg-forest px-6 py-3.5 text-center text-sm font-semibold text-cream shadow-md transition hover:bg-forest-dark hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70"
+          className="w-full rounded-xl bg-forest px-6 py-4 text-center text-base font-semibold text-cream shadow-md transition hover:bg-forest-dark hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {status === "loading" ? "Sending…" : "Submit"}
+          {status === "loading" ? "Sending…" : "Send Message"}
         </button>
       </form>
     </div>

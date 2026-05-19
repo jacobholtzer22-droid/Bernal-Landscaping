@@ -21,7 +21,11 @@ export async function POST(request: Request) {
         name: String(fd.get("name") ?? ""),
         email: String(fd.get("email") ?? ""),
         phone: String(fd.get("phone") ?? ""),
+        service: String(fd.get("service") ?? ""),
         message: String(fd.get("message") ?? ""),
+        smsConsent:
+          String(fd.get("smsConsent") ?? "") === "true" ||
+          fd.get("smsConsent") === "on",
         photo: fd.get("photo") instanceof File ? (fd.get("photo") as File) : null,
       };
       // TODO: forward _payload (and photo) to email/storage provider
