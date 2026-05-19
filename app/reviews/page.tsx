@@ -4,7 +4,9 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { CtaSection } from "@/components/cta-section";
-import { TESTIMONIALS } from "@/lib/gallery";
+import Image from "next/image";
+import Link from "next/link";
+import { TESTIMONIALS, FEATURED, pickGallery } from "@/lib/gallery";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -30,7 +32,7 @@ export default function ReviewsPage() {
           title="Reviews & Testimonials"
           eyebrow="What Clients Say"
           description="Real words from homeowners and businesses across West Michigan. Five-star service, every project."
-          image="https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/088393d1-007a-4391-8764-71054e160cbd-1172w.jpg"
+          image={FEATURED.reviews}
           imageAlt="Manicured lawn from a Bernal Landscape project"
           crumbs={[{ label: "Home", href: "/" }, { label: "Reviews" }]}
         />
@@ -61,6 +63,36 @@ export default function ReviewsPage() {
                   </figcaption>
                 </figure>
               ))}
+            </div>
+
+            {/* Photo strip — the work behind the reviews */}
+            <div className="mt-16">
+              <div className="mx-auto max-w-3xl text-center">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
+                  The Work Behind the Reviews
+                </p>
+                <h3 className="mt-3 font-serif text-2xl font-semibold text-forest md:text-3xl">
+                  Recent projects across West Michigan
+                </h3>
+              </div>
+              <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4">
+                {pickGallery("reviews-strip", 8).map((img, index) => (
+                  <Link
+                    key={img.src + index}
+                    href="/gallery"
+                    className="group relative block aspect-square overflow-hidden rounded-xl bg-charcoal/5 shadow-sm"
+                    aria-label={`View gallery: ${img.alt}`}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </Link>
+                ))}
+              </div>
             </div>
 
             {/* Leave a review CTA */}

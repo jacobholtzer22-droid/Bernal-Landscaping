@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { ContactForm } from "@/components/contact-form";
 import { SocialLinks } from "@/components/social-links";
 import { SITE } from "@/lib/site";
+import { FEATURED, pickGallery } from "@/lib/gallery";
 
 export const metadata: Metadata = {
   title: "Contact Bernal Landscape Management",
@@ -35,7 +38,7 @@ export default function ContactPage() {
           title="Contact Us"
           eyebrow="Get in Touch"
           description="Tell us about your project. We respond within one business day, and consultations are always free."
-          image="https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/aba410dc-df4c-4998-8d24-e7244e1f43e9-1172w.jpg"
+          image={FEATURED.contact}
           imageAlt="Bernal Landscape finished project detail"
           crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
         />
@@ -149,6 +152,50 @@ export default function ContactPage() {
               <div>
                 <ContactForm />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Photo strip — recent work */}
+        <section className="border-t border-forest/10 bg-white py-20 md:py-24">
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
+                Recent Work
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-4xl">
+                See what we&apos;ve been up to
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
+                A look at recent projects we&apos;ve completed for homeowners
+                across West Michigan.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4">
+              {pickGallery("contact-strip", 8).map((img, index) => (
+                <Link
+                  key={img.src + index}
+                  href="/gallery"
+                  className="group relative block aspect-square overflow-hidden rounded-xl bg-charcoal/5 shadow-sm"
+                  aria-label={`View gallery: ${img.alt}`}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                </Link>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link
+                href="/gallery"
+                className="inline-flex items-center justify-center rounded-xl border-2 border-forest bg-transparent px-8 py-3 text-sm font-semibold text-forest transition hover:bg-forest hover:text-cream"
+              >
+                View Full Gallery
+              </Link>
             </div>
           </div>
         </section>

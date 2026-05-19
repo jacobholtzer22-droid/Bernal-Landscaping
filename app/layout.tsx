@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/d1fbab65-4657-4892-ad3b-83905e98f917-1172w.jpg",
-        width: 1172,
-        height: 780,
-        alt: "Bernal Landscape project",
+        url: `${SITE.url}/gallery/20250411_172500.jpg`,
+        width: 4000,
+        height: 3000,
+        alt: "Bernal Landscape Management completed project in Grand Rapids, MI",
       },
     ],
   },

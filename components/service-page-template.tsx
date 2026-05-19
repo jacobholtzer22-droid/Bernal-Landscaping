@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Check, ShieldCheck } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { CtaSection } from "@/components/cta-section";
 import { SERVICES, type Service } from "@/lib/services";
+import { pickGallery } from "@/lib/gallery";
 
 type ServicePageTemplateProps = {
   service: Service;
@@ -10,6 +12,7 @@ type ServicePageTemplateProps = {
 
 export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
   const related = SERVICES.filter((s) => s.slug !== service.slug).slice(0, 4);
+  const serviceGallery = pickGallery(service.slug, 9);
 
   return (
     <>
@@ -98,6 +101,52 @@ export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Per-service photo gallery */}
+      <section className="border-t border-forest/10 bg-cream py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
+              Recent Work
+            </p>
+            <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-4xl">
+              Examples of our {service.shortTitle.toLowerCase()} projects
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
+              A look at recent {service.shortTitle.toLowerCase()} work completed
+              across Grand Rapids and West Michigan.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {serviceGallery.map((img, index) => (
+              <Link
+                key={img.src + index}
+                href="/gallery"
+                className="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-charcoal/5 shadow-sm transition-shadow hover:shadow-lg"
+                aria-label={`View gallery: ${img.alt}`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center justify-center rounded-xl border-2 border-forest bg-transparent px-8 py-3 text-sm font-semibold text-forest transition hover:bg-forest hover:text-cream"
+            >
+              View Full Gallery
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -12,14 +12,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { QuoteForm } from "@/components/quote-form";
 import { SocialLinks } from "@/components/social-links";
 import { SERVICES } from "@/lib/services";
-import { GALLERY, TESTIMONIALS } from "@/lib/gallery";
+import { FEATURED, HOME_HIGHLIGHTS, TESTIMONIALS, pickGallery } from "@/lib/gallery";
 import { SITE } from "@/lib/site";
 
-const HERO_IMAGE =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/d1fbab65-4657-4892-ad3b-83905e98f917-1172w.jpg";
-
-const ABOUT_IMAGE =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/c7fcf598-eef4-4444-8308-21bc5362446f-1172w.jpg";
+const HERO_IMAGE = FEATURED.hero;
+const ABOUT_IMAGE = FEATURED.about;
+const RECENT_WORK = pickGallery("home-recent-work", 12);
 
 export default function Home() {
   return (
@@ -201,29 +199,45 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Gallery */}
+        {/* Featured Work - Highlights */}
         <section id="gallery" className="scroll-mt-28 py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-4">
-            <h2 className="text-center font-serif text-3xl font-semibold text-forest md:text-4xl">
-              Our Work
-            </h2>
-            <div className="mt-12 columns-1 gap-4 sm:columns-2 lg:columns-3">
-              {GALLERY.map((img, index) => (
-                <div
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
+                Our Work
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-4xl">
+                Featured Projects
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
+                Real photos of recent landscape, hardscape, and property-care
+                projects we&apos;ve completed across West Michigan.
+              </p>
+            </div>
+
+            <div className="mt-14 grid gap-4 md:grid-cols-3 md:gap-5">
+              {HOME_HIGHLIGHTS.slice(0, 9).map((img, index) => (
+                <Link
                   key={img.src + index}
-                  className="mb-4 break-inside-avoid overflow-hidden rounded-2xl bg-charcoal/5 shadow-sm"
+                  href="/gallery"
+                  className="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-charcoal/5 shadow-sm transition-shadow hover:shadow-lg"
+                  aria-label={`View gallery: ${img.alt}`}
                 >
                   <Image
                     src={img.src}
                     alt={img.alt}
-                    width={img.width}
-                    height={img.height}
-                    className="w-full object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    fill
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                </div>
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    aria-hidden
+                  />
+                </Link>
               ))}
             </div>
+
             <div className="mt-12 text-center">
               <Link
                 href="/gallery"
@@ -231,6 +245,33 @@ export default function Home() {
               >
                 View Full Gallery
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Marquee strip of recent work */}
+        <section
+          aria-label="Recent Bernal Landscape project photos"
+          className="border-y border-forest/10 bg-cream py-12 md:py-16"
+        >
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+              {RECENT_WORK.map((img, index) => (
+                <Link
+                  key={img.src + index}
+                  href="/gallery"
+                  className="group relative block aspect-square overflow-hidden rounded-xl bg-charcoal/5 shadow-sm"
+                  aria-label={`View gallery: ${img.alt}`}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                  />
+                </Link>
+              ))}
             </div>
           </div>
         </section>
@@ -282,8 +323,21 @@ export default function Home() {
         {/* Service areas */}
         <section
           id="service-areas"
-          className="scroll-mt-28 border-t border-forest/10 bg-forest py-16 text-cream"
+          className="relative scroll-mt-28 overflow-hidden border-t border-forest/10 py-20 text-cream md:py-24"
         >
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src={FEATURED.serviceAreas}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div
+              className="absolute inset-0 bg-forest/85"
+              aria-hidden
+            />
+          </div>
           <div className="mx-auto max-w-3xl px-4 text-center">
             <Leaf
               className="mx-auto h-10 w-10 text-terracotta"

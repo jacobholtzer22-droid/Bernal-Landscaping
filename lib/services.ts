@@ -29,24 +29,20 @@ export type Service = {
   faq?: { question: string; answer: string }[];
 };
 
-const HERO_LANDSCAPE =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/d1fbab65-4657-4892-ad3b-83905e98f917-1172w.jpg";
-const HERO_HARDSCAPE =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/c7fcf598-eef4-4444-8308-21bc5362446f-1172w.jpg";
-const HERO_PATIO =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/ca8ba884-3ad1-4793-b32e-aef60fbf4ce6-1172w.jpg";
-const HERO_LAWN =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/088393d1-007a-4391-8764-71054e160cbd-1172w.jpg";
-const HERO_BEDS =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/b9fabc0f-9f68-42bb-983a-53a8a00ed921-1172w.jpg";
-const HERO_DETAIL =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/aba410dc-df4c-4998-8d24-e7244e1f43e9-1172w.jpg";
-const HERO_PROJECT =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/08812026-40ab-4c0f-a84d-e04061a1c50b-1172w.jpg";
-const HERO_PHOTO_5 =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/5-1172w.jpg";
-const HERO_PHOTO_1 =
-  "https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/1-1172w.jpg";
+// Hero photos are real Bernal Landscape project photos in /public/gallery/.
+const HERO_LANDSCAPE = "/gallery/20250411_172500.jpg";
+const HERO_HARDSCAPE = "/gallery/20250411_172601.jpg";
+const HERO_PATIO = "/gallery/20250411_172838.jpg";
+const HERO_LAWN = "/gallery/FB_IMG_1758730003165.jpg";
+const HERO_DETAIL = "/gallery/20250411_172615.jpg";
+const HERO_PROJECT = "/gallery/20250411_172928.jpg";
+const HERO_SOD = "/gallery/FB_IMG_1758729997354.jpg";
+const HERO_TREE = "/gallery/FB_IMG_1771690358929.jpg";
+const HERO_TREE_REMOVAL = "/gallery/FB_IMG_1758730009531.jpg";
+const HERO_LEAVES = "/gallery/FB_IMG_1771690390552.jpg";
+const HERO_DRAIN = "/gallery/FB_IMG_1771690408247.jpg";
+const HERO_FRENCH = "/gallery/FB_IMG_1771944411767.jpg";
+const HERO_MULCH = "/gallery/FB_IMG_1754343316006.jpg";
 
 export const SERVICES: Service[] = [
   {
@@ -243,7 +239,7 @@ export const SERVICES: Service[] = [
       "Clear watering and care instructions after install",
     ],
     Icon: Layers,
-    heroImage: HERO_PHOTO_5,
+    heroImage: HERO_SOD,
   },
   {
     slug: "tree-service",
@@ -271,7 +267,7 @@ export const SERVICES: Service[] = [
       "Honest assessment — prune, treat, or remove",
     ],
     Icon: TreeDeciduous,
-    heroImage: HERO_BEDS,
+    heroImage: HERO_TREE,
   },
   {
     slug: "tree-removal",
@@ -299,7 +295,7 @@ export const SERVICES: Service[] = [
       "Stump grinding and clean-up included on request",
     ],
     Icon: Axe,
-    heroImage: HERO_PROJECT,
+    heroImage: HERO_TREE_REMOVAL,
   },
   {
     slug: "leaf-cleanup",
@@ -327,7 +323,7 @@ export const SERVICES: Service[] = [
       "Hauled off-site so nothing blows back",
     ],
     Icon: Leaf,
-    heroImage: HERO_PHOTO_1,
+    heroImage: HERO_LEAVES,
   },
   {
     slug: "yard-drain-installation",
@@ -355,7 +351,7 @@ export const SERVICES: Service[] = [
       "Lawn restored after every install",
     ],
     Icon: Droplets,
-    heroImage: HERO_DETAIL,
+    heroImage: HERO_DRAIN,
   },
   {
     slug: "french-drains",
@@ -383,7 +379,7 @@ export const SERVICES: Service[] = [
       "Long-term performance, not a quick patch",
     ],
     Icon: Waves,
-    heroImage: HERO_DETAIL,
+    heroImage: HERO_FRENCH,
   },
   {
     slug: "mulching",
@@ -411,7 +407,7 @@ export const SERVICES: Service[] = [
       "No mulch volcanoes — installed at proper depth",
     ],
     Icon: Flower2,
-    heroImage: HERO_BEDS,
+    heroImage: HERO_MULCH,
   },
 ];
 

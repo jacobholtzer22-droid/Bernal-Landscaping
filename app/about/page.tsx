@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { CtaSection } from "@/components/cta-section";
 import { SITE } from "@/lib/site";
+import { FEATURED, pickGallery } from "@/lib/gallery";
 
 export const metadata: Metadata = {
   title: "About Bernal Landscape Management",
@@ -54,7 +55,7 @@ export default function AboutPage() {
           title="About Bernal Landscape"
           eyebrow="Our Story"
           description="Family-owned and operated. 15+ years building landscapes that hold up across West Michigan."
-          image="https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/c7fcf598-eef4-4444-8308-21bc5362446f-1172w.jpg"
+          image={FEATURED.about}
           imageAlt="Bernal Landscape Management team and projects"
           crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         />
@@ -64,11 +65,10 @@ export default function AboutPage() {
           <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src="https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/d1fbab65-4657-4892-ad3b-83905e98f917-1172w.jpg"
+                src={FEATURED.servicesIndex}
                 alt="Bernal Landscape Management completed project"
-                width={1172}
-                height={880}
-                className="h-full w-full object-cover"
+                fill
+                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -203,6 +203,52 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Recent Work photo strip */}
+        <section className="border-t border-forest/10 bg-white py-20 md:py-24">
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
+                Recent Work
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-4xl">
+                A glimpse at what we&apos;ve been building
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
+                A small sample of recent projects across Grand Rapids and West
+                Michigan. See the full set in our gallery.
+              </p>
+            </div>
+
+            <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4">
+              {pickGallery("about-strip", 12).map((img, index) => (
+                <Link
+                  key={img.src + index}
+                  href="/gallery"
+                  className="group relative block aspect-square overflow-hidden rounded-xl bg-charcoal/5 shadow-sm"
+                  aria-label={`View gallery: ${img.alt}`}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <Link
+                href="/gallery"
+                className="inline-flex items-center justify-center rounded-xl border-2 border-forest bg-transparent px-8 py-3 text-sm font-semibold text-forest transition hover:bg-forest hover:text-cream"
+              >
+                View Full Gallery
+              </Link>
             </div>
           </div>
         </section>

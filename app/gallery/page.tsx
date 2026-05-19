@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { CtaSection } from "@/components/cta-section";
 import { GalleryGrid } from "@/components/gallery-grid";
-import { GALLERY } from "@/lib/gallery";
+import { GALLERY, FEATURED } from "@/lib/gallery";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -29,14 +29,26 @@ export default function GalleryPage() {
         <PageHero
           title="Project Gallery"
           eyebrow="Our Work"
-          description="A look at recent landscape, hardscape, and property-care projects across Grand Rapids and West Michigan."
-          image="https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/ca8ba884-3ad1-4793-b32e-aef60fbf4ce6-1172w.jpg"
+          description={`Browse ${GALLERY.length}+ real photos of recent landscape, hardscape, and property-care projects from across Grand Rapids and West Michigan.`}
+          image={FEATURED.gallery}
           imageAlt="Bernal Landscape paver patio project"
           crumbs={[{ label: "Home", href: "/" }, { label: "Gallery" }]}
         />
 
         <section className="bg-cream py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-4">
+            <div className="mx-auto mb-12 max-w-3xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
+                {GALLERY.length} Projects &amp; Counting
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-4xl">
+                Real work, real properties
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
+                Every photo below is from a Bernal Landscape job — no stock
+                images. Click any photo to view full-screen.
+              </p>
+            </div>
             <GalleryGrid images={GALLERY} />
           </div>
         </section>

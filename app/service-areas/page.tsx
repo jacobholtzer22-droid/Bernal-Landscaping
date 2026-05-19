@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHero } from "@/components/page-hero";
 import { CtaSection } from "@/components/cta-section";
 import { SITE, SERVICE_AREAS } from "@/lib/site";
+import { FEATURED, pickGallery } from "@/lib/gallery";
 
 export const metadata: Metadata = {
   title: "Service Areas in West Michigan",
@@ -29,7 +32,7 @@ export default function ServiceAreasPage() {
           title="Service Areas"
           eyebrow="Where We Work"
           description="Proudly serving Grand Rapids, Wyoming, and the surrounding West Michigan communities."
-          image="https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/b9fabc0f-9f68-42bb-983a-53a8a00ed921-1172w.jpg"
+          image={FEATURED.serviceAreas}
           imageAlt="Front-yard landscape project in West Michigan"
           crumbs={[
             { label: "Home", href: "/" },
@@ -64,6 +67,36 @@ export default function ServiceAreasPage() {
                 </li>
               ))}
             </ul>
+
+            {/* Photo collage — work across the region */}
+            <div className="mt-16">
+              <div className="mx-auto max-w-3xl text-center">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
+                  Work Across The Region
+                </p>
+                <h3 className="mt-3 font-serif text-2xl font-semibold text-forest md:text-3xl">
+                  Projects from neighborhoods like yours
+                </h3>
+              </div>
+              <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4">
+                {pickGallery("service-areas-strip", 8).map((img, index) => (
+                  <Link
+                    key={img.src + index}
+                    href="/gallery"
+                    className="group relative block aspect-square overflow-hidden rounded-xl bg-charcoal/5 shadow-sm"
+                    aria-label={`View gallery: ${img.alt}`}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
 
             <div className="mx-auto mt-14 max-w-3xl rounded-2xl border border-forest/15 bg-white p-8 text-center shadow-sm md:p-12">
               <h3 className="font-serif text-2xl font-semibold text-forest md:text-3xl">
