@@ -281,16 +281,17 @@ export function ContactForm({
         <label className="flex cursor-pointer items-start gap-3 rounded-xl bg-white/60 px-4 py-3 text-xs leading-relaxed text-charcoal/70 transition hover:bg-white">
           <input
             type="checkbox"
+            required
             checked={smsConsent}
             onChange={(e) => setSmsConsent(e.target.checked)}
             className="mt-0.5 h-4 w-4 shrink-0 rounded border-charcoal/30 text-forest focus:ring-forest/30"
           />
           <span>
-            By checking this box and providing your phone number, you consent
-            to receive SMS messages from Bernal Landscape Management. Message
-            frequency may vary. Standard message and data rates may apply.
-            Reply STOP to opt out. Reply HELP for help. Consent is not a
-            condition of purchase.
+            <span className="text-terracotta">*</span> By checking this box and
+            providing your phone number, you consent to receive SMS messages
+            from Bernal Landscape Management. Message frequency may vary.
+            Standard message and data rates may apply. Reply STOP to opt out.
+            Reply HELP for help. Consent is not a condition of purchase.
           </span>
         </label>
 
