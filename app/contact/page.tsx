@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import {
+  CalendarCheck,
+  CheckCircle2,
+  Clock,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
@@ -46,35 +54,78 @@ export default function ContactPage() {
         {/* Two-options hero: send a message OR book directly */}
         <section className="bg-cream py-14 md:py-20">
           <div className="mx-auto max-w-7xl px-4">
+            <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
+                Two ways to start
+              </p>
+              <h2 className="mt-2 font-serif text-2xl font-semibold text-forest md:text-3xl">
+                Send a request, or book a visit directly
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-charcoal/75 md:text-base">
+                Not sure when you&apos;re free? Send a message and Salvador will
+                reach back out. Already know a time that works? Pick an open
+                slot on his calendar — it&apos;s confirmed instantly.
+              </p>
+            </div>
             <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-10">
-              {/* Form column */}
+              {/* Form column — request a callback */}
               <div>
                 <div className="mb-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
-                    Option 1
-                  </p>
-                  <h2 className="mt-2 font-serif text-2xl font-semibold text-forest md:text-3xl">
-                    Send a Quote Request
-                  </h2>
+                  <div className="flex items-center gap-2">
+                    <MessageSquare
+                      className="h-4 w-4 text-terracotta"
+                      strokeWidth={2}
+                      aria-hidden
+                    />
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
+                      Option 1 · Send a Message
+                    </p>
+                  </div>
+                  <h3 className="mt-2 font-serif text-2xl font-semibold text-forest md:text-3xl">
+                    Request a Callback
+                  </h3>
                   <p className="mt-2 text-sm leading-relaxed text-charcoal/75 md:text-base">
-                    Tell us about your project and we&apos;ll get back to you.
+                    Tell Salvador about your project. He&apos;ll text or call
+                    you back to set up a time to come look at the property.
+                    Best if you&apos;re not sure when you&apos;re free yet.
                   </p>
+                  <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-forest/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-forest">
+                    <Clock className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
+                    Typical reply within 24 hours
+                  </div>
                 </div>
                 <ContactForm anchorId="quote-form" hideHeader />
               </div>
 
-              {/* Iframe column */}
+              {/* Iframe column — book directly */}
               <div>
                 <div className="mb-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
-                    Option 2
-                  </p>
-                  <h2 className="mt-2 font-serif text-2xl font-semibold text-forest md:text-3xl">
-                    Book Your Quote Visit
-                  </h2>
+                  <div className="flex items-center gap-2">
+                    <CalendarCheck
+                      className="h-4 w-4 text-terracotta"
+                      strokeWidth={2}
+                      aria-hidden
+                    />
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
+                      Option 2 · Book Instantly
+                    </p>
+                  </div>
+                  <h3 className="mt-2 font-serif text-2xl font-semibold text-forest md:text-3xl">
+                    Book a Quote Visit on Salvador&apos;s Calendar
+                  </h3>
                   <p className="mt-2 text-sm leading-relaxed text-charcoal/75 md:text-base">
-                    Pick a time that works — Salvador will be there.
+                    Pick an open slot below. The visit goes straight onto
+                    Salvador&apos;s calendar and you get a confirmation right
+                    away — no back-and-forth.
                   </p>
+                  <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-terracotta/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-terracotta">
+                    <CheckCircle2
+                      className="h-3.5 w-3.5"
+                      strokeWidth={2}
+                      aria-hidden
+                    />
+                    Instant confirmation
+                  </div>
                 </div>
                 <div
                   id="book-quote"
