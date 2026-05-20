@@ -56,7 +56,7 @@ export default function AboutPage() {
           eyebrow="Our Story"
           description="Family-owned and operated. 15+ years building landscapes that hold up across West Michigan."
           image={FEATURED.about}
-          imageAlt="Bernal Landscape Management team and projects"
+          imageAlt="Circular paver-edged front-yard bed with white rock, ornamental tree, and boulder accent installed by Bernal Landscape"
           crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         />
 
@@ -66,7 +66,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
               <Image
                 src={FEATURED.servicesIndex}
-                alt="Bernal Landscape Management completed project"
+                alt="Curved paver-edged landscape bed with white rock and a decorative boulder along the side of a home"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

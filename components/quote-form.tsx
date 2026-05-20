@@ -1,13 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { SERVICES } from "@/lib/services";
 
 const SERVICE_OPTIONS = [
   ...SERVICES.map((s) => ({ value: s.slug, label: s.shortTitle })),
   { value: "not-sure", label: "Not Sure / Multiple Services" },
 ];
+
+const LEAD_INTAKE_URL =
+  process.env.NEXT_PUBLIC_LEAD_INTAKE_URL ||
+  "https://www.alignandacquire.com/api/contact";
+
+// NOTE: businessSlug must match the Business.slug in the MissedCall AI system.
+// Confirmed against the live tenant — adjust here if it ever changes.
+const BUSINESS_SLUG = "bernal-landscape";
 
 type QuoteFormProps = {
   /** Anchor id on the surrounding wrapper. Useful for /contact#quote-form links. */
@@ -34,17 +42,25 @@ export function QuoteForm({ anchorId = "quote-form" }: QuoteFormProps) {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("/api/contact", {
+      const serviceLabel =
+        SERVICE_OPTIONS.find((o) => o.value === service)?.label ?? "";
+      const messageBody = [
+        serviceLabel && `Service: ${serviceLabel}`,
+        address && `Property address: ${address}`,
+        message && `\n${message}`,
+      ]
+        .filter(Boolean)
+        .join("\n");
+      const res = await fetch(LEAD_INTAKE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name,
           email,
           phone,
-          address,
-          service,
-          message,
+          message: messageBody,
           smsConsent,
+          businessSlug: BUSINESS_SLUG,
         }),
       });
       if (res.ok) {
@@ -251,9 +267,16 @@ export function QuoteForm({ anchorId = "quote-form" }: QuoteFormProps) {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full rounded-xl bg-forest px-6 py-4 text-center text-base font-semibold text-cream shadow-md transition hover:bg-forest-dark hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-forest px-6 py-4 text-center text-base font-semibold text-cream shadow-md transition hover:bg-forest-dark hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {status === "loading" ? "Sending…" : "Send Message"}
+          {status === "loading" ? (
+            <>
+              <Loader2 className="h-5 w-5 animate-spin" aria-hidden />
+              Sending…
+            </>
+          ) : (
+            "Send Message"
+          )}
         </button>
       </form>
     </div>

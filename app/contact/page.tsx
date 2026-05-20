@@ -39,7 +39,7 @@ export default function ContactPage() {
           eyebrow="Get a Quote"
           description="Tell us about your project and we'll get right back to you. Free, no-obligation estimates across Grand Rapids and West Michigan."
           image={FEATURED.contact}
-          imageAlt="Bernal Landscape finished project detail"
+          imageAlt="Circular paver-edged front-yard island bed with white rock and a slender ornamental tree"
           crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
         />
 
@@ -152,6 +152,35 @@ export default function ContactPage() {
               <div>
                 <ContactForm anchorId="quote-form" />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Direct booking — embedded calendar */}
+        <section
+          id="book-quote"
+          className="scroll-mt-28 border-t border-forest/10 bg-white py-20 md:py-24"
+          aria-label="Schedule a free quote visit"
+        >
+          <div className="mx-auto max-w-5xl px-4">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
+                Prefer to schedule?
+              </p>
+              <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-4xl">
+                Or schedule your free quote visit directly
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
+                Pick a time that works for you — Salvador will be there.
+              </p>
+            </div>
+            <div className="mt-10 overflow-hidden rounded-2xl border border-forest/10 bg-cream shadow-sm">
+              <iframe
+                src="https://www.alignandacquire.com/book/bernal-landscape/embed"
+                className="block w-full min-h-[700px] border-0"
+                title="Schedule a free quote visit with Bernal Landscape"
+                loading="lazy"
+              />
             </div>
           </div>
         </section>

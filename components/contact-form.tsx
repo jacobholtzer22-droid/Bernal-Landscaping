@@ -1,13 +1,21 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { CheckCircle2, Paperclip } from "lucide-react";
+import { CheckCircle2, Loader2, Paperclip } from "lucide-react";
 import { SERVICES } from "@/lib/services";
 
 const SERVICE_OPTIONS = [
   ...SERVICES.map((s) => ({ value: s.slug, label: s.shortTitle })),
   { value: "not-sure", label: "Not Sure / Multiple Services" },
 ];
+
+const LEAD_INTAKE_URL =
+  process.env.NEXT_PUBLIC_LEAD_INTAKE_URL ||
+  "https://www.alignandacquire.com/api/contact";
+
+// NOTE: businessSlug must match the Business.slug in the MissedCall AI system.
+// Confirmed against the live tenant — adjust here if it ever changes.
+const BUSINESS_SLUG = "bernal-landscape";
 
 type ContactFormProps = {
   /** Anchor id on the surrounding wrapper. Useful for /contact#quote-form links. */
@@ -37,32 +45,31 @@ export function ContactForm({ anchorId = "quote-form" }: ContactFormProps) {
     setStatus("loading");
 
     try {
-      const formEl = e.currentTarget;
-      const file = fileInputRef.current?.files?.[0];
+      const serviceLabel =
+        SERVICE_OPTIONS.find((o) => o.value === service)?.label ?? "";
+      const messageBody = [
+        serviceLabel && `Service: ${serviceLabel}`,
+        address && `Property address: ${address}`,
+        message && `\n${message}`,
+      ]
+        .filter(Boolean)
+        .join("\n");
 
-      let res: Response;
-      if (file) {
-        const fd = new FormData(formEl);
-        if (smsConsent) fd.set("smsConsent", "true");
-        res = await fetch("/api/contact", {
-          method: "POST",
-          body: fd,
-        });
-      } else {
-        res = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-            email,
-            phone,
-            address,
-            service,
-            message,
-            smsConsent,
-          }),
-        });
-      }
+      // NOTE: the lead-intake endpoint does not accept a photo attachment.
+      // If a file was selected, we still submit the rest of the lead and
+      // leave the photo behind — the customer can email it after.
+      const res = await fetch(LEAD_INTAKE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message: messageBody,
+          smsConsent,
+          businessSlug: BUSINESS_SLUG,
+        }),
+      });
 
       if (res.ok) {
         setStatus("success");
@@ -298,9 +305,16 @@ export function ContactForm({ anchorId = "quote-form" }: ContactFormProps) {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full rounded-xl bg-forest px-6 py-4 text-center text-base font-semibold text-cream shadow-md transition hover:bg-forest-dark hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-forest px-6 py-4 text-center text-base font-semibold text-cream shadow-md transition hover:bg-forest-dark hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {status === "loading" ? "Sending…" : "Send Message"}
+          {status === "loading" ? (
+            <>
+              <Loader2 className="h-5 w-5 animate-spin" aria-hidden />
+              Sending…
+            </>
+          ) : (
+            "Send Message"
+          )}
         </button>
       </form>
     </div>

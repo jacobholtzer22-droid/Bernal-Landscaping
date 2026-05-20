@@ -26,7 +26,6 @@ export const GALLERY: GalleryImage[] = [
   { src: "/gallery/FB_IMG_1771944411767.jpg", alt: "Backyard transformation by Bernal Landscape Management", width: 1440, height: 1440 },
   { src: "/gallery/FB_IMG_1779146552127.jpg", alt: "Finished Bernal Landscape project in West Michigan", width: 1440, height: 1440 },
   { src: "/gallery/FB_IMG_1779146559581.jpg", alt: "Custom landscape installation by Bernal Landscape Management", width: 1440, height: 1440 },
-  { src: "/gallery/FB_IMG_1773036119396.jpg", alt: "Hardscape and stone work completed by Bernal Landscape", width: 1440, height: 1197 },
   { src: "/gallery/FB_IMG_1771690122929.jpg", alt: "Paver patio installation in Grand Rapids, MI", width: 1440, height: 1080 },
   { src: "/gallery/FB_IMG_1743118546502.jpg", alt: "Retaining wall built by Bernal Landscape Management", width: 960, height: 1290 },
   { src: "/gallery/FB_IMG_1743118573385.jpg", alt: "Manicured lawn maintained by Bernal Landscape", width: 960, height: 1290 },

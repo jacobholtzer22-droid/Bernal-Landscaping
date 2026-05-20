@@ -97,14 +97,17 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="bg-forest text-cream/95">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 text-[11px] font-semibold uppercase tracking-wider sm:text-xs">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-2 text-[10px] font-semibold uppercase tracking-wider sm:px-4 sm:text-xs">
           <a
             href={SITE.phone.href}
             className="shrink-0 transition-colors duration-200 hover:text-terracotta"
           >
-            CALL US TODAY · {SITE.phone.display}
+            <span className="hidden sm:inline">CALL US TODAY · </span>
+            {SITE.phone.display}
           </a>
-          <SocialLinks linkClassName="rounded-full p-1.5 text-cream/90 transition-colors duration-200 hover:bg-white/10 hover:text-terracotta" />
+          <div className="hidden sm:block">
+            <SocialLinks linkClassName="rounded-full p-1.5 text-cream/90 transition-colors duration-200 hover:bg-white/10 hover:text-terracotta" />
+          </div>
         </div>
       </div>
 
@@ -115,7 +118,7 @@ export function SiteHeader() {
             : "border-transparent bg-transparent"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-4 sm:px-4 lg:gap-6">
           {/* TODO: Swap text logo for image from https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/4f75c978ce53ebfae62b4b5692bcbbd5logo-1920w.jpg */}
           <Link
             href="/"
@@ -130,7 +133,7 @@ export function SiteHeader() {
               aria-hidden
             />
             <span
-              className={`font-semibold tracking-tight transition-colors duration-300 sm:text-lg ${
+              className={`text-sm font-semibold tracking-tight transition-colors duration-300 sm:text-base lg:text-lg ${
                 scrolled ? "text-charcoal" : "text-white"
               }`}
             >
@@ -241,17 +244,17 @@ export function SiteHeader() {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-3 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
             <Link
               href="/contact"
               onClick={closeMobile}
-              className="rounded-xl bg-forest px-4 py-2 text-xs font-semibold text-cream shadow-md transition hover:bg-forest-dark sm:text-sm"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-forest px-4 py-2.5 text-sm font-semibold text-cream shadow-md transition hover:bg-forest-dark"
             >
               Get a Quote
             </Link>
             <button
               type="button"
-              className={`rounded-lg p-2 transition-colors ${
+              className={`inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2.5 transition-colors ${
                 scrolled
                   ? "text-charcoal hover:bg-forest/10"
                   : "text-white hover:bg-white/10"

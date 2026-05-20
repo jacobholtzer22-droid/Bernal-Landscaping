@@ -21,7 +21,7 @@ export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
         eyebrow="Our Services"
         description={service.tagline}
         image={service.heroImage}
-        imageAlt={`${service.title} project by Bernal Landscape Management`}
+        imageAlt={service.heroImageAlt}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

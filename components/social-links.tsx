@@ -10,7 +10,7 @@ function YelpIcon({ className }: { className?: string }) {
   );
 }
 
-const iconClass = "h-4 w-4 sm:h-[18px] sm:w-[18px]";
+const iconClass = "h-5 w-5";
 
 type SocialLinksProps = {
   className?: string;
@@ -20,7 +20,8 @@ type SocialLinksProps = {
 export function SocialLinks({ className, linkClassName }: SocialLinksProps) {
   const baseLink =
     linkClassName ??
-    "rounded-full p-2 text-charcoal/80 transition-colors hover:bg-forest/10 hover:text-forest";
+    "inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-charcoal/80 transition-colors hover:bg-forest/10 hover:text-forest";
+  const sized = `${baseLink} inline-flex min-h-11 min-w-11 items-center justify-center`;
 
   return (
     <div className={`flex items-center gap-1 ${className ?? ""}`}>
@@ -28,7 +29,7 @@ export function SocialLinks({ className, linkClassName }: SocialLinksProps) {
         href={SITE.socials.facebook}
         target="_blank"
         rel="noopener noreferrer"
-        className={baseLink}
+        className={sized}
         aria-label="Facebook"
       >
         <Facebook className={iconClass} strokeWidth={1.75} />
@@ -37,7 +38,7 @@ export function SocialLinks({ className, linkClassName }: SocialLinksProps) {
         href={SITE.socials.instagram}
         target="_blank"
         rel="noopener noreferrer"
-        className={baseLink}
+        className={sized}
         aria-label="Instagram"
       >
         <Instagram className={iconClass} strokeWidth={1.75} />
@@ -46,7 +47,7 @@ export function SocialLinks({ className, linkClassName }: SocialLinksProps) {
         href={SITE.socials.yelp}
         target="_blank"
         rel="noopener noreferrer"
-        className={baseLink}
+        className={sized}
         aria-label="Yelp"
       >
         <YelpIcon className={iconClass} />

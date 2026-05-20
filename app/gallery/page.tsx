@@ -31,7 +31,7 @@ export default function GalleryPage() {
           eyebrow="Our Work"
           description={`Browse ${GALLERY.length}+ real photos of recent landscape, hardscape, and property-care projects from across Grand Rapids and West Michigan.`}
           image={FEATURED.gallery}
-          imageAlt="Bernal Landscape paver patio project"
+          imageAlt="Paver-edged foundation bed of white rock and small shrubs along the front of a West Michigan home"
           crumbs={[{ label: "Home", href: "/" }, { label: "Gallery" }]}
         />
 

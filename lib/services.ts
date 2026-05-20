@@ -26,23 +26,24 @@ export type Service = {
   whyChoose: string[];
   Icon: LucideIcon;
   heroImage: string;
+  heroImageAlt: string;
   faq?: { question: string; answer: string }[];
 };
 
 // Hero photos are real Bernal Landscape project photos in /public/gallery/.
-const HERO_LANDSCAPE = "/gallery/20250411_172500.jpg";
-const HERO_HARDSCAPE = "/gallery/20250411_172601.jpg";
-const HERO_PATIO = "/gallery/20250411_172838.jpg";
-const HERO_LAWN = "/gallery/FB_IMG_1758730003165.jpg";
-const HERO_DETAIL = "/gallery/20250411_172615.jpg";
+const HERO_LANDSCAPE = "/gallery/FB_IMG_1743117671590.jpg";
+const HERO_HARDSCAPE = "/gallery/FB_IMG_1743853526770.jpg";
+const HERO_PATIO = "/gallery/FB_IMG_1743117357646.jpg";
+const HERO_LAWN = "/gallery/FB_IMG_1758730003165.jpg"; // TODO: replace with an established lawn photo from client (current image is fresh sod)
+const HERO_DETAIL = "/gallery/FB_IMG_1771690122929.jpg"; // TODO: replace with a dedicated concrete driveway/flatwork photo from client
 const HERO_SOD = "/gallery/FB_IMG_1758729997354.jpg";
-const HERO_TREE = "/gallery/FB_IMG_1771690358929.jpg";
-const HERO_TREE_REMOVAL = "/gallery/FB_IMG_1758730009531.jpg";
-const HERO_LEAVES = "/gallery/FB_IMG_1771690390552.jpg";
-const HERO_DRAIN = "/gallery/FB_IMG_1771690408247.jpg";
-const HERO_FRENCH = "/gallery/FB_IMG_1771944411767.jpg";
-const HERO_MULCH = "/gallery/FB_IMG_1754343316006.jpg";
-const HERO_SNOW = "/gallery/snow-plowing.jpg";
+const HERO_TREE = "/gallery/FB_IMG_1743117334950.jpg"; // TODO: replace with an actual tree service / pruning photo from client
+const HERO_TREE_REMOVAL = "/gallery/FB_IMG_1758730009531.jpg"; // TODO: replace with an actual tree removal photo from client
+const HERO_LEAVES = "/gallery/FB_IMG_1743117351300.jpg"; // TODO: replace with a dedicated leaf cleanup action photo from client
+const HERO_DRAIN = "/gallery/FB_IMG_1749655041513.jpg";
+const HERO_FRENCH = "/gallery/FB_IMG_1743117562825.jpg";
+const HERO_MULCH = "/gallery/FB_IMG_1743117674708.jpg";
+const HERO_SNOW = "/gallery/FB_IMG_1646188521681.jpg";
 
 export const SERVICES: Service[] = [
   {
@@ -72,6 +73,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: Palette,
     heroImage: HERO_LANDSCAPE,
+    heroImageAlt:
+      "Paver staircase climbing a mulched landscape bed with boulders and bright black-eyed Susan flowers",
   },
   {
     slug: "retaining-wall-construction",
@@ -100,6 +103,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: BrickWall,
     heroImage: HERO_HARDSCAPE,
+    heroImageAlt:
+      "Tan block retaining wall with center stairs and a planting bed in a sodded West Michigan backyard",
   },
   {
     slug: "concrete-construction",
@@ -128,6 +133,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: SquareStack,
     heroImage: HERO_DETAIL,
+    heroImageAlt:
+      "Raised tan block wall enclosing a concrete pad beside a tan-sided West Michigan home",
   },
   {
     slug: "paver-patio-installation",
@@ -156,6 +163,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: LayoutGrid,
     heroImage: HERO_PATIO,
+    heroImageAlt:
+      "Curving walkway of red and black paver squares set in pea gravel through a landscape bed",
   },
   {
     slug: "lawn-maintenance",
@@ -184,6 +193,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: Sprout,
     heroImage: HERO_LAWN,
+    heroImageAlt:
+      "Narrow strip of freshly laid sod between a home's siding and a new horizontal-board wood fence",
   },
   {
     slug: "snow-plowing-and-shoveling",
@@ -212,6 +223,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: Snowflake,
     heroImage: HERO_SNOW,
+    heroImageAlt:
+      "Three Bernal plow trucks lined up at night on snowy pavement with plows lowered",
   },
   {
     slug: "sod-installation",
@@ -240,6 +253,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: Layers,
     heroImage: HERO_SOD,
+    heroImageAlt:
+      "Backyard with freshly installed sod and a new horizontal-board wood privacy fence",
   },
   {
     slug: "tree-service",
@@ -268,6 +283,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: TreeDeciduous,
     heroImage: HERO_TREE,
+    heroImageAlt:
+      "Raised tan block planter with young birch trees and river rock in front of a stone-faced home",
   },
   {
     slug: "tree-removal",
@@ -296,6 +313,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: Axe,
     heroImage: HERO_TREE_REMOVAL,
+    heroImageAlt:
+      "Backyard with newly laid sod and a new wood fence beside a mature shade tree",
   },
   {
     slug: "leaf-cleanup",
@@ -324,6 +343,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: Leaf,
     heroImage: HERO_LEAVES,
+    heroImageAlt:
+      "Red and black checkerboard paver walkway flanked by pea gravel beds scattered with autumn leaves",
   },
   {
     slug: "yard-drain-installation",
@@ -352,6 +373,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: Droplets,
     heroImage: HERO_DRAIN,
+    heroImageAlt:
+      "Long deep trench cut across a residential yard with a skid steer at the far end during a drainage install",
   },
   {
     slug: "french-drains",
@@ -380,6 +403,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: Waves,
     heroImage: HERO_FRENCH,
+    heroImageAlt:
+      "Subsurface drainage strip of pea gravel framed by river rock alongside a freshly sodded lawn",
   },
   {
     slug: "mulching",
@@ -408,6 +433,8 @@ export const SERVICES: Service[] = [
     ],
     Icon: Flower2,
     heroImage: HERO_MULCH,
+    heroImageAlt:
+      "Tan paver stairs descending to flagstone through a freshly mulched bed with boulders and a Bernal yard sign",
   },
 ];
 

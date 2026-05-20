@@ -33,7 +33,7 @@ export default function ServiceAreasPage() {
           eyebrow="Where We Work"
           description="Proudly serving Grand Rapids, Wyoming, and the surrounding West Michigan communities."
           image={FEATURED.serviceAreas}
-          imageAlt="Front-yard landscape project in West Michigan"
+          imageAlt="Tan block retaining wall with a gravel drainage channel along the side of a brick home"
           crumbs={[
             { label: "Home", href: "/" },
             { label: "Service Areas" },

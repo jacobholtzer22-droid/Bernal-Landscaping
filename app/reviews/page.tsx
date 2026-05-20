@@ -33,7 +33,7 @@ export default function ReviewsPage() {
           eyebrow="What Clients Say"
           description="Real words from homeowners and businesses across West Michigan. Five-star service, every project."
           image={FEATURED.reviews}
-          imageAlt="Manicured lawn from a Bernal Landscape project"
+          imageAlt="Narrow side-yard retaining wall and raised mulched bed beside a brick West Michigan home"
           crumbs={[{ label: "Home", href: "/" }, { label: "Reviews" }]}
         />
 

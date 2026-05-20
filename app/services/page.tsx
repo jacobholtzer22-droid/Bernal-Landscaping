@@ -33,14 +33,14 @@ export default function ServicesIndexPage() {
           eyebrow="What We Do"
           description="From planting beds to driveways, retaining walls to snow removal — we handle the full property, season after season."
           image={FEATURED.servicesIndex}
-          imageAlt="Bernal Landscape project gallery"
+          imageAlt="Curved paver-edged landscape bed with white rock and a decorative boulder along the side of a home"
           crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
         />
 
         <section className="bg-cream py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-4">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {SERVICES.map(({ slug, title, description, Icon, heroImage }) => (
+              {SERVICES.map(({ slug, title, description, Icon, heroImage, heroImageAlt }) => (
                 <Link
                   key={slug}
                   href={`/services/${slug}`}
@@ -49,7 +49,7 @@ export default function ServicesIndexPage() {
                   <div className="relative aspect-[16/10] overflow-hidden bg-charcoal/5">
                     <Image
                       src={heroImage}
-                      alt={`${title} project by Bernal Landscape Management`}
+                      alt={heroImageAlt}
                       fill
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
