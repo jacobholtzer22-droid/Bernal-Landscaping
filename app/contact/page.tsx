@@ -43,7 +43,57 @@ export default function ContactPage() {
           crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
         />
 
-        <section className="bg-cream py-20 md:py-28">
+        {/* Two-options hero: send a message OR book directly */}
+        <section className="bg-cream py-14 md:py-20">
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-10">
+              {/* Form column */}
+              <div>
+                <div className="mb-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
+                    Option 1
+                  </p>
+                  <h2 className="mt-2 font-serif text-2xl font-semibold text-forest md:text-3xl">
+                    Send a Quote Request
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-charcoal/75 md:text-base">
+                    Tell us about your project and we&apos;ll get back to you.
+                  </p>
+                </div>
+                <ContactForm anchorId="quote-form" hideHeader />
+              </div>
+
+              {/* Iframe column */}
+              <div>
+                <div className="mb-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
+                    Option 2
+                  </p>
+                  <h2 className="mt-2 font-serif text-2xl font-semibold text-forest md:text-3xl">
+                    Book Your Quote Visit
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-charcoal/75 md:text-base">
+                    Pick a time that works — Salvador will be there.
+                  </p>
+                </div>
+                <div
+                  id="book-quote"
+                  className="scroll-mt-28 overflow-hidden rounded-3xl border border-forest/15 bg-white shadow-xl"
+                >
+                  <iframe
+                    src="https://www.alignandacquire.com/book/bernal-landscape/embed"
+                    className="block w-full min-h-[700px] border-0"
+                    title="Schedule a free quote visit with Bernal Landscape"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Business info + map */}
+        <section className="border-t border-forest/10 bg-white py-20 md:py-24">
           <div className="mx-auto max-w-7xl px-4">
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
               {/* Info */}
@@ -134,53 +184,19 @@ export default function ContactPage() {
                     <SocialLinks />
                   </div>
                 </div>
-
-                {/* Map */}
-                <div className="mt-12 overflow-hidden rounded-2xl border border-charcoal/10 bg-white shadow-sm">
-                  <iframe
-                    title={`Map of ${SITE.name}`}
-                    src={mapEmbed}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="h-72 w-full border-0 md:h-80"
-                    allowFullScreen
-                  />
-                </div>
               </div>
 
-              {/* Form */}
-              <div>
-                <ContactForm anchorId="quote-form" />
+              {/* Map */}
+              <div className="overflow-hidden rounded-2xl border border-charcoal/10 bg-white shadow-sm lg:sticky lg:top-28">
+                <iframe
+                  title={`Map of ${SITE.name}`}
+                  src={mapEmbed}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-80 w-full border-0 md:h-96 lg:h-[480px]"
+                  allowFullScreen
+                />
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Direct booking — embedded calendar */}
-        <section
-          id="book-quote"
-          className="scroll-mt-28 border-t border-forest/10 bg-white py-20 md:py-24"
-          aria-label="Schedule a free quote visit"
-        >
-          <div className="mx-auto max-w-5xl px-4">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
-                Prefer to schedule?
-              </p>
-              <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-4xl">
-                Or schedule your free quote visit directly
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
-                Pick a time that works for you — Salvador will be there.
-              </p>
-            </div>
-            <div className="mt-10 overflow-hidden rounded-2xl border border-forest/10 bg-cream shadow-sm">
-              <iframe
-                src="https://www.alignandacquire.com/book/bernal-landscape/embed"
-                className="block w-full min-h-[700px] border-0"
-                title="Schedule a free quote visit with Bernal Landscape"
-                loading="lazy"
-              />
             </div>
           </div>
         </section>

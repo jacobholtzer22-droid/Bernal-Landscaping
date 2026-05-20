@@ -20,9 +20,14 @@ const BUSINESS_SLUG = "bernal-landscape";
 type ContactFormProps = {
   /** Anchor id on the surrounding wrapper. Useful for /contact#quote-form links. */
   anchorId?: string;
+  /** Hide the internal forest-gradient header (use when a section-level header sits above the card). */
+  hideHeader?: boolean;
 };
 
-export function ContactForm({ anchorId = "quote-form" }: ContactFormProps) {
+export function ContactForm({
+  anchorId = "quote-form",
+  hideHeader = false,
+}: ContactFormProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
@@ -100,17 +105,19 @@ export function ContactForm({ anchorId = "quote-form" }: ContactFormProps) {
       id={anchorId}
       className="scroll-mt-28 overflow-hidden rounded-3xl border border-forest/15 bg-white shadow-xl"
     >
-      <div className="bg-gradient-to-r from-forest to-forest-dark px-8 py-7 text-cream md:px-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
-          Contact Us
-        </p>
-        <h2 className="mt-2 font-serif text-2xl font-semibold md:text-3xl">
-          Get a Quote
-        </h2>
-        <p className="mt-2 text-sm text-cream/85">
-          Send us a message — we&apos;ll get right back to you.
-        </p>
-      </div>
+      {hideHeader ? null : (
+        <div className="bg-gradient-to-r from-forest to-forest-dark px-8 py-7 text-cream md:px-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta">
+            Contact Us
+          </p>
+          <h2 className="mt-2 font-serif text-2xl font-semibold md:text-3xl">
+            Get a Quote
+          </h2>
+          <p className="mt-2 text-sm text-cream/85">
+            Send us a message — we&apos;ll get right back to you.
+          </p>
+        </div>
+      )}
 
       <form
         onSubmit={handleSubmit}
