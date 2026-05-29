@@ -133,6 +133,16 @@ export function SiteFooter() {
       <div className="border-t border-white/10 py-6 text-center text-xs text-cream/55">
         © {new Date().getFullYear()} {SITE.name}. All rights reserved.
       </div>
+      <div className="bg-terracotta py-3 text-center">
+        <a
+          href="https://www.alignandacquire.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-semibold tracking-wide text-white transition hover:text-charcoal"
+        >
+          Website by Align and Acquire
+        </a>
+      </div>
     </footer>
   );
 }
