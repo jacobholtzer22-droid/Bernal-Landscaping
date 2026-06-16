@@ -217,7 +217,7 @@ export function QuoteForm({ anchorId = "quote-form" }: QuoteFormProps) {
 
         <div>
           <label htmlFor="quote-message" className={labelClass}>
-            Message
+            Notes
           </label>
           <textarea
             id="quote-message"

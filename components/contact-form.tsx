@@ -234,7 +234,7 @@ export function ContactForm({
 
         <div>
           <label htmlFor="contact-message" className={labelClass}>
-            Message
+            Notes
           </label>
           <textarea
             id="contact-message"
