@@ -12,12 +12,12 @@ import { FEATURED, pickGallery } from "@/lib/gallery";
 export const metadata: Metadata = {
   title: "About Bernal Landscape Management",
   description:
-    "Family-owned, licensed and insured, with 15+ years serving Grand Rapids and West Michigan. BBB accredited.",
+    "Family-owned and fully insured, with over a decade serving Grand Rapids and West Michigan. BBB accredited.",
   alternates: { canonical: `${SITE.url}/about` },
   openGraph: {
     title: "About Bernal Landscape Management",
     description:
-      "Family-owned, licensed and insured, with 15+ years serving Grand Rapids and West Michigan. BBB accredited.",
+      "Family-owned and fully insured, with over a decade serving Grand Rapids and West Michigan. BBB accredited.",
     url: `${SITE.url}/about`,
     type: "website",
   },
@@ -31,8 +31,8 @@ const VALUES = [
   },
   {
     Icon: ShieldCheck,
-    title: "Licensed & Insured",
-    body: "Fully licensed and insured for residential and commercial work in Michigan, with safety on every site as a non-negotiable.",
+    title: "Fully Insured",
+    body: "Fully insured for residential and commercial work in Michigan, with safety on every site as a non-negotiable.",
   },
   {
     Icon: Award,
@@ -54,7 +54,7 @@ export default function AboutPage() {
         <PageHero
           title="About Bernal Landscape"
           eyebrow="Our Story"
-          description="Family-owned and operated. 15+ years building landscapes that hold up across West Michigan."
+          description="Family-owned and operated. Over a decade building landscapes that hold up across West Michigan."
           image={FEATURED.about}
           imageAlt="Circular paver-edged front-yard bed with white rock, ornamental tree, and boulder accent installed by Bernal Landscape"
           crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
@@ -84,13 +84,13 @@ export default function AboutPage() {
                   Treat every property like it&apos;s your own front yard.
                 </p>
                 <p>
-                  More than 15 years later, we&apos;re still doing it that way —
+                  More than a decade later, we&apos;re still doing it that way —
                   serving homeowners and businesses across Grand Rapids, Wyoming,
                   and the broader West Michigan area. We&apos;ve grown, but we
                   haven&apos;t outgrown the values that started the company.
                 </p>
                 <p>
-                  We&apos;re fully licensed and insured, BBB accredited, and proud to
+                  We&apos;re fully insured, BBB accredited, and proud to
                   be a family business that earns most of our work through referrals
                   and repeat customers. If you&apos;ve got a project in mind,
                   we&apos;d love to walk it with you.
@@ -184,7 +184,7 @@ export default function AboutPage() {
                     Coverage
                   </p>
                   <p className="text-sm font-semibold text-charcoal">
-                    Licensed &amp; Insured
+                    Fully Insured
                   </p>
                 </div>
               </div>
@@ -199,7 +199,7 @@ export default function AboutPage() {
                     Experience
                   </p>
                   <p className="text-sm font-semibold text-charcoal">
-                    15+ Years in Business
+                    Over a Decade in Business
                   </p>
                 </div>
               </div>

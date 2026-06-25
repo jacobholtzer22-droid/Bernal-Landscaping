@@ -38,7 +38,7 @@ export function PageHero({
               className="object-cover"
             />
             <div
-              className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/85"
+              className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/40 to-black/75"
               aria-hidden
             />
           </>
@@ -47,7 +47,7 @@ export function PageHero({
         )}
       </div>
 
-      <div className="mx-auto w-full max-w-7xl px-4 pb-14 pt-36 md:pb-20 md:pt-44">
+      <div className="mx-auto w-full max-w-7xl px-4 pb-14 pt-20 md:pb-20 md:pt-24">
         {crumbs && crumbs.length > 0 ? (
           <nav
             aria-label="Breadcrumb"

@@ -96,7 +96,7 @@ export function HeroSlideshow() {
 
       {/* Dark gradient so white hero text stays readable on every slide */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/45 to-black/85"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/75"
         aria-hidden
       />
 

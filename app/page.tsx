@@ -52,9 +52,8 @@ const FEATURED_CATEGORIES: Array<{
     label: "Lawn Maintenance",
     title: "Lawn Care & Mowing",
     href: "/services/lawn-maintenance",
-    // TODO: replace with a dedicated mowing/lawn-care photo from client
-    image: "/gallery/FB_IMG_1743117644259.jpg",
-    alt: "Green lawn fronting a gray block retaining wall on the side of a home",
+    image: "/gallery/FB_IMG_1576048889845.jpg",
+    alt: "Expansive backyard lawn with crisp mowing stripes behind a two-story home",
   },
 ];
 
@@ -65,8 +64,8 @@ const WHY_CHOOSE_US: Array<{
 }> = [
   {
     Icon: Award,
-    title: "15+ Years of Experience",
-    body: "Trust our experience to get the job done. We have over 15 years in the industry serving West Michigan homeowners.",
+    title: "Over a Decade of Experience",
+    body: "Trust our experience to get the job done. We have over a decade in the industry serving West Michigan homeowners.",
   },
   {
     Icon: Sparkles,
@@ -75,8 +74,8 @@ const WHY_CHOOSE_US: Array<{
   },
   {
     Icon: ShieldCheck,
-    title: "Licensed & Insured",
-    body: "We truly value the state of all our clients' homes. That's why we're 100% licensed and insured for your safety and ours.",
+    title: "Fully Insured",
+    body: "We truly value the state of all our clients' homes. That's why we're 100% insured for your safety and ours.",
   },
   {
     Icon: Handshake,
@@ -94,12 +93,12 @@ export default function Home() {
         {/* Hero */}
         <section
           id="home"
-          className="relative min-h-[88vh] overflow-hidden"
+          className="relative min-h-[80vh] overflow-hidden"
           aria-label="Introduction"
         >
           <HeroSlideshow />
 
-          <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-4 pb-36 pt-40 md:pb-48 md:pt-44">
+          <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-4 pb-36 pt-24 md:pb-48 md:pt-28">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta sm:text-sm">
               Family Owned &amp; Operated · West Michigan
             </p>
@@ -110,7 +109,7 @@ export default function Home() {
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
               Family-owned landscape design, hardscaping, and property care
-              serving Grand Rapids and West Michigan for over 15 years.
+              serving Grand Rapids and West Michigan for over a decade.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
@@ -135,7 +134,7 @@ export default function Home() {
                 <div>
                   <dt className="sr-only">Years of experience</dt>
                   <dd className="font-serif text-3xl font-semibold tracking-tight text-terracotta md:text-5xl">
-                    15+
+                    10+
                   </dd>
                   <p className="mt-2 text-[10px] font-medium uppercase tracking-wide text-white/85 sm:text-xs sm:tracking-wider">
                     Years Experience
@@ -151,12 +150,12 @@ export default function Home() {
                   </p>
                 </div>
                 <div>
-                  <dt className="sr-only">Licensed and insured</dt>
+                  <dt className="sr-only">Fully insured</dt>
                   <dd className="font-serif text-3xl font-semibold tracking-tight text-terracotta md:text-5xl">
                     100%
                   </dd>
                   <p className="mt-2 text-[10px] font-medium uppercase tracking-wide text-white/85 sm:text-xs sm:tracking-wider">
-                    Licensed &amp; Insured
+                    Insured
                   </p>
                 </div>
               </dl>
@@ -334,7 +333,7 @@ export default function Home() {
                 Family Owned &amp; Operated
               </h2>
               <p className="mt-6 leading-relaxed text-charcoal/85 md:text-lg">
-                For more than 15 years, Bernal Landscape Management has served
+                For more than a decade, Bernal Landscape Management has served
                 homeowners and businesses across Grand Rapids and West Michigan
                 with thoughtful design, dependable crews, and workmanship built
                 to last. We&apos;re proud to be a family-owned, BBB-accredited
@@ -482,41 +481,31 @@ export default function Home() {
         {/* Ready to Transform CTA banner */}
         <section
           aria-label="Get a free quote"
-          className="relative isolate overflow-hidden py-24 text-cream md:py-32"
+          className="border-t border-forest/10 bg-forest/5 py-20 md:py-28"
         >
-          <div className="absolute inset-0 -z-10">
-            <Image
-              src="/gallery/FB_IMG_1743117687157.jpg"
-              alt=""
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-forest/85" aria-hidden />
-          </div>
           <ScrollReveal className="mx-auto max-w-3xl px-4 text-center">
             <Leaf
               className="mx-auto h-10 w-10 text-terracotta"
               strokeWidth={1.5}
               aria-hidden
             />
-            <h2 className="mt-5 font-serif text-3xl font-semibold leading-tight md:text-5xl">
+            <h2 className="mt-5 font-serif text-3xl font-semibold leading-tight text-forest md:text-5xl">
               Ready to start your next project?
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-cream/85 md:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-charcoal/80 md:text-lg">
               Tell us about your property and we&apos;ll put together a clear,
               honest quote — no pressure.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact#quote-form"
-                className="inline-flex items-center justify-center rounded-xl bg-cream px-8 py-3.5 text-sm font-semibold text-forest shadow-lg transition hover:bg-white hover:shadow-xl"
+                className="inline-flex items-center justify-center rounded-xl bg-forest px-8 py-3.5 text-sm font-semibold text-cream shadow-md transition hover:bg-forest-dark hover:shadow-lg"
               >
                 Get a Quote
               </Link>
               <a
                 href={SITE.phone.href}
-                className="inline-flex items-center justify-center rounded-xl border-2 border-cream/80 px-8 py-3.5 text-sm font-semibold text-cream transition hover:border-cream hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-xl border-2 border-forest px-8 py-3.5 text-sm font-semibold text-forest transition hover:bg-forest hover:text-cream"
               >
                 Call {SITE.phone.display}
               </a>

@@ -43,22 +43,21 @@ export function GalleryGrid({ images }: GalleryGridProps) {
 
   return (
     <>
-      <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 xl:grid-cols-5">
         {images.map((img, idx) => (
           <button
             key={img.src + idx}
             type="button"
             onClick={() => setOpenIndex(idx)}
-            className="mb-4 block w-full break-inside-avoid overflow-hidden rounded-2xl bg-charcoal/5 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
+            className="group relative aspect-square overflow-hidden rounded-xl bg-charcoal/5 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
             aria-label={`Open ${img.alt}`}
           >
             <Image
               src={img.src}
               alt={img.alt}
-              width={img.width}
-              height={img.height}
-              className="w-full object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              fill
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1280px) 25vw, 20vw"
             />
           </button>
         ))}

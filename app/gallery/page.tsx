@@ -38,10 +38,7 @@ export default function GalleryPage() {
         <section className="bg-cream py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-4">
             <div className="mx-auto mb-12 max-w-3xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">
-                {GALLERY.length} Projects &amp; Counting
-              </p>
-              <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-4xl">
+              <h2 className="font-serif text-3xl font-semibold text-forest md:text-4xl">
                 Real work, real properties
               </h2>
               <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">

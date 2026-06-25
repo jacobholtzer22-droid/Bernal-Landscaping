@@ -47,8 +47,8 @@ export default function ServiceAreasPage() {
                 Cities &amp; Communities We Serve
               </h2>
               <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
-                Headquartered in Wyoming, MI, with crews dispatched daily across the
-                Grand Rapids metro and surrounding West Michigan communities.
+                Crews dispatched daily across the Grand Rapids metro and
+                surrounding West Michigan communities.
               </p>
             </div>
 

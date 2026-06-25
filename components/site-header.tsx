@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronRight, ExternalLink, Leaf, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronRight, ExternalLink, Menu, X } from "lucide-react";
 import { SocialLinks } from "@/components/social-links";
 import { SITE } from "@/lib/site";
 import { SERVICES } from "@/lib/services";
@@ -19,24 +20,11 @@ const NAV_LINKS: { href: string; label: string }[] = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    if (!isHome) {
-      setScrolled(true);
-      return;
-    }
-    const onScroll = () => setScrolled(window.scrollY > 48);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
 
   useEffect(() => {
     if (mobileOpen) document.body.style.overflow = "hidden";
@@ -80,12 +68,8 @@ export function SiteHeader() {
   }
 
   const linkBase = "rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200";
-  const linkColor = scrolled
-    ? "text-charcoal/90 hover:bg-forest/5 hover:text-forest"
-    : "text-white/90 hover:bg-white/10 hover:text-white";
-  const activeColor = scrolled
-    ? "bg-forest/10 text-forest"
-    : "bg-white/15 text-white";
+  const linkColor = "text-charcoal/90 hover:bg-forest/5 hover:text-forest";
+  const activeColor = "bg-forest/10 text-forest";
 
   function closeMobile() {
     setMobileOpen(false);
@@ -95,7 +79,7 @@ export function SiteHeader() {
   const servicesActive = pathname.startsWith("/services");
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="sticky top-0 z-50">
       <div className="bg-forest text-cream/95">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-2 text-[10px] font-semibold uppercase tracking-wider sm:px-4 sm:text-xs">
           <a
@@ -111,34 +95,21 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <div
-        className={`border-b transition-all duration-300 ${
-          scrolled
-            ? "border-forest/10 bg-cream/95 shadow-sm backdrop-blur-md"
-            : "border-transparent bg-transparent"
-        }`}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-4 sm:px-4 lg:gap-6">
-          {/* TODO: Swap text logo for image from https://lirp.cdn-website.com/43e7349b/dms3rep/multi/opt/4f75c978ce53ebfae62b4b5692bcbbd5logo-1920w.jpg */}
+      <div className="border-b border-forest/10 bg-cream shadow-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-3 sm:px-4 lg:gap-6">
           <Link
             href="/"
-            className="flex items-center gap-2 transition-opacity hover:opacity-90"
+            className="flex items-center transition-opacity hover:opacity-90"
             onClick={closeMobile}
           >
-            <Leaf
-              className={`h-8 w-8 shrink-0 transition-colors duration-300 ${
-                scrolled ? "text-forest" : "text-white"
-              }`}
-              strokeWidth={1.75}
-              aria-hidden
+            <Image
+              src="/bernal-logo.png"
+              alt="Bernal Landscape Management"
+              width={763}
+              height={198}
+              priority
+              className="h-10 w-auto"
             />
-            <span
-              className={`text-sm font-semibold tracking-tight transition-colors duration-300 sm:text-base lg:text-lg ${
-                scrolled ? "text-charcoal" : "text-white"
-              }`}
-            >
-              Bernal Landscape
-            </span>
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
@@ -254,11 +225,7 @@ export function SiteHeader() {
             </Link>
             <button
               type="button"
-              className={`inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2.5 transition-colors ${
-                scrolled
-                  ? "text-charcoal hover:bg-forest/10"
-                  : "text-white hover:bg-white/10"
-              }`}
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2.5 text-charcoal transition-colors hover:bg-forest/10"
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}

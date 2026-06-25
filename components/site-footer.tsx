@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Leaf } from "lucide-react";
 import { SocialLinks } from "@/components/social-links";
 import { SITE } from "@/lib/site";
 import { SERVICES } from "@/lib/services";
@@ -18,15 +18,14 @@ export function SiteFooter() {
     <footer className="border-t border-forest/15 bg-charcoal text-cream">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 md:grid-cols-4 md:gap-10">
         <div>
-          <div className="flex items-center gap-2">
-            <Leaf
-              className="h-8 w-8 text-terracotta"
-              strokeWidth={1.75}
-              aria-hidden
+          <div className="inline-flex items-center rounded-lg bg-cream p-3">
+            <Image
+              src="/bernal-logo.png"
+              alt="Bernal Landscape Management"
+              width={763}
+              height={198}
+              className="h-8 w-auto"
             />
-            <span className="font-semibold tracking-tight">
-              {SITE.shortName}
-            </span>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-cream/75">
             {SITE.description}

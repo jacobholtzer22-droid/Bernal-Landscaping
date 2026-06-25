@@ -34,11 +34,11 @@ export type Service = {
 const HERO_LANDSCAPE = "/gallery/FB_IMG_1743117671590.jpg";
 const HERO_HARDSCAPE = "/gallery/FB_IMG_1743853526770.jpg";
 const HERO_PATIO = "/gallery/FB_IMG_1743117357646.jpg";
-const HERO_LAWN = "/gallery/FB_IMG_1758730003165.jpg"; // TODO: replace with an established lawn photo from client (current image is fresh sod)
-const HERO_DETAIL = "/gallery/FB_IMG_1771690122929.jpg"; // TODO: replace with a dedicated concrete driveway/flatwork photo from client
+const HERO_LAWN = "/gallery/FB_IMG_1743118168178.jpg"; // Bernal crew mowing a striped lawn on a zero-turn mower
+const HERO_DETAIL = "/gallery/FB_IMG_1743117455681.jpg"; // Poured concrete driveway / flatwork
 const HERO_SOD = "/gallery/FB_IMG_1758729997354.jpg";
-const HERO_TREE = "/gallery/FB_IMG_1743117334950.jpg"; // TODO: replace with an actual tree service / pruning photo from client
-const HERO_TREE_REMOVAL = "/gallery/FB_IMG_1758730009531.jpg"; // TODO: replace with an actual tree removal photo from client
+const HERO_TREE = "/gallery/FB_IMG_1576048912848.jpg"; // Worker in a boom lift pruning a tree canopy
+const HERO_TREE_REMOVAL = "/gallery/FB_IMG_1743117175401.jpg"; // Aerial of a tree-removal job: cut log pile, skid-steer, crew trucks
 const HERO_LEAVES = "/gallery/FB_IMG_1743117351300.jpg"; // TODO: replace with a dedicated leaf cleanup action photo from client
 const HERO_DRAIN = "/gallery/FB_IMG_1749655041513.jpg";
 const HERO_FRENCH = "/gallery/FB_IMG_1743117562825.jpg";
@@ -134,7 +134,7 @@ export const SERVICES: Service[] = [
     Icon: SquareStack,
     heroImage: HERO_DETAIL,
     heroImageAlt:
-      "Raised tan block wall enclosing a concrete pad beside a tan-sided West Michigan home",
+      "Freshly poured smooth-finished concrete driveway running alongside a red-sided West Michigan home",
   },
   {
     slug: "paver-patio-installation",
@@ -194,7 +194,7 @@ export const SERVICES: Service[] = [
     Icon: Sprout,
     heroImage: HERO_LAWN,
     heroImageAlt:
-      "Narrow strip of freshly laid sod between a home's siding and a new horizontal-board wood fence",
+      "Bernal Landscape crew member mowing a striped green lawn on a zero-turn mower",
   },
   {
     slug: "snow-plowing-and-shoveling",
@@ -284,7 +284,7 @@ export const SERVICES: Service[] = [
     Icon: TreeDeciduous,
     heroImage: HERO_TREE,
     heroImageAlt:
-      "Raised tan block planter with young birch trees and river rock in front of a stone-faced home",
+      "Bernal Landscape worker in an articulated boom lift pruning the canopy of a tall tree",
   },
   {
     slug: "tree-removal",
@@ -314,7 +314,7 @@ export const SERVICES: Service[] = [
     Icon: Axe,
     heroImage: HERO_TREE_REMOVAL,
     heroImageAlt:
-      "Backyard with newly laid sod and a new wood fence beside a mature shade tree",
+      "Aerial view of a Bernal Landscape tree-removal job site with a pile of cut log sections, a skid-steer, and crew trucks",
   },
   {
     slug: "leaf-cleanup",

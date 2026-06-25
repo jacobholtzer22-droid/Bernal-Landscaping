@@ -2,9 +2,9 @@ export const SITE = {
   name: "Bernal Landscape Management, LLC",
   shortName: "Bernal Landscape",
   tagline:
-    "Family Owned & Operated · 15+ Years of Experience · Licensed & Insured",
+    "Family Owned & Operated · Over a Decade of Experience · Fully Insured",
   description:
-    "Family-owned landscape design, hardscaping, and property care serving Grand Rapids and West Michigan for over 15 years.",
+    "Family-owned landscape design, hardscaping, and property care serving Grand Rapids and West Michigan for over a decade.",
   url: "https://bernallandscape.com",
   phone: {
     display: "616-477-1221",
