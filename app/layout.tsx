@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { LocalBusinessJsonLd } from "@/components/local-business-jsonld";
+import { SiteSchemaJsonLd } from "@/components/site-schema-jsonld";
 import { SITE } from "@/lib/site";
 
 const inter = Inter({
@@ -18,7 +19,7 @@ const playfair = Playfair_Display({
 });
 
 const defaultTitle =
-  "Bernal Landscape Management, LLC — Top Rated Landscaper — Grand Rapids, Michigan";
+  "Bernal Landscape Management | Landscaper in Grand Rapids, MI";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -60,6 +61,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         {children}
         <LocalBusinessJsonLd />
+        <SiteSchemaJsonLd />
       </body>
     </html>
   );

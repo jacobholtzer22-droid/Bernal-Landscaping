@@ -8,7 +8,8 @@ export const SITE = {
   url: "https://bernallandscape.com",
   phone: {
     display: "616-477-1221",
-    href: "tel:6164771221",
+    href: "tel:+16164771221",
+    e164: "+16164771221",
   },
   email: {
     display: "salvador@bernallandscape.com",

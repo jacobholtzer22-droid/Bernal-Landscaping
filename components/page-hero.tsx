@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { SITE } from "@/lib/site";
 
 type Crumb = { label: string; href?: string };
 
@@ -12,6 +13,28 @@ type PageHeroProps = {
   imageAlt?: string;
   crumbs?: Crumb[];
 };
+
+function BreadcrumbJsonLd({ crumbs }: { crumbs: Crumb[] }) {
+  const items = crumbs.map((c, i) => ({
+    "@type": "ListItem" as const,
+    position: i + 1,
+    name: c.label,
+    ...(c.href ? { item: `${SITE.url}${c.href}` } : {}),
+  }));
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items,
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
 
 export function PageHero({
   title,
@@ -26,6 +49,8 @@ export function PageHero({
       className="relative isolate flex min-h-[55vh] items-end overflow-hidden md:min-h-[60vh]"
       aria-label={title}
     >
+      {crumbs && crumbs.length > 0 && <BreadcrumbJsonLd crumbs={crumbs} />}
+
       <div className="absolute inset-0 -z-10">
         {image ? (
           <>

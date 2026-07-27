@@ -9,15 +9,16 @@ import { CtaSection } from "@/components/cta-section";
 import { SITE } from "@/lib/site";
 import { FEATURED, pickGallery } from "@/lib/gallery";
 
+const DESCRIPTION =
+  "Meet the family behind Bernal Landscape Management — over a decade of landscape design, hardscaping, and property care in Grand Rapids and West Michigan. BBB A+ accredited and fully insured.";
+
 export const metadata: Metadata = {
-  title: "About Bernal Landscape Management",
-  description:
-    "Family-owned and fully insured, with over a decade serving Grand Rapids and West Michigan. BBB accredited.",
+  title: "About Us — Family-Owned Landscaper in Grand Rapids",
+  description: DESCRIPTION,
   alternates: { canonical: `${SITE.url}/about` },
   openGraph: {
-    title: "About Bernal Landscape Management",
-    description:
-      "Family-owned and fully insured, with over a decade serving Grand Rapids and West Michigan. BBB accredited.",
+    title: "About Bernal Landscape — Family-Owned Since 2010",
+    description: DESCRIPTION,
     url: `${SITE.url}/about`,
     type: "website",
   },

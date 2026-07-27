@@ -9,15 +9,16 @@ import Link from "next/link";
 import { TESTIMONIALS, FEATURED, pickGallery } from "@/lib/gallery";
 import { SITE } from "@/lib/site";
 
+const DESCRIPTION =
+  "Read reviews from Bernal Landscape Management customers across Grand Rapids and West Michigan. Landscape design, retaining walls, paver patios, lawn care, and more.";
+
 export const metadata: Metadata = {
   title: "Reviews & Testimonials",
-  description:
-    "Read reviews from Bernal Landscape Management customers across Grand Rapids and West Michigan.",
+  description: DESCRIPTION,
   alternates: { canonical: `${SITE.url}/reviews` },
   openGraph: {
     title: "Reviews & Testimonials | Bernal Landscape",
-    description:
-      "Read reviews from Bernal Landscape Management customers across Grand Rapids and West Michigan.",
+    description: DESCRIPTION,
     url: `${SITE.url}/reviews`,
     type: "website",
   },

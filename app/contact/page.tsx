@@ -18,15 +18,16 @@ import { SocialLinks } from "@/components/social-links";
 import { SITE } from "@/lib/site";
 import { FEATURED, pickGallery } from "@/lib/gallery";
 
+const DESCRIPTION =
+  "Request a free landscape, hardscape, lawn-care, or snow-removal estimate from Bernal Landscape Management. Serving Grand Rapids, Wyoming, Kentwood, and West Michigan.";
+
 export const metadata: Metadata = {
-  title: "Contact Bernal Landscape Management",
-  description:
-    "Get in touch for a free landscape, hardscape, lawn-care, or snow-removal estimate. Serving Grand Rapids and West Michigan.",
+  title: "Contact Us — Free Estimates in Grand Rapids, MI",
+  description: DESCRIPTION,
   alternates: { canonical: `${SITE.url}/contact` },
   openGraph: {
-    title: "Contact Bernal Landscape Management",
-    description:
-      "Get in touch for a free landscape, hardscape, lawn-care, or snow-removal estimate. Serving Grand Rapids and West Michigan.",
+    title: "Contact Bernal Landscape — Free Estimates",
+    description: DESCRIPTION,
     url: `${SITE.url}/contact`,
     type: "website",
   },

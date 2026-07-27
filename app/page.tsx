@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -18,7 +19,20 @@ import { SERVICES } from "@/lib/services";
 import { FEATURED, HOME_HIGHLIGHTS, TESTIMONIALS } from "@/lib/gallery";
 import { SITE } from "@/lib/site";
 
+export const metadata: Metadata = {
+  alternates: { canonical: `${SITE.url}/` },
+};
+
 const ABOUT_IMAGE = FEATURED.about;
+
+const HOMEPAGE_FAQ = [
+  { question: "What services does Bernal Landscape Management offer?", answer: "We offer 13 services including landscape design and installation, retaining wall construction, concrete construction, paver patio installation, lawn maintenance, snow plowing and shoveling, sod installation, tree service, tree removal, leaf cleanup, yard drain installation, French drains, and mulching." },
+  { question: "What areas does Bernal Landscape serve?", answer: "We serve 17 cities across West Michigan including Grand Rapids, Wyoming, Kentwood, Walker, Grandville, Byron Center, Caledonia, Cutlerville, Forest Hills, Ada, Cascade, Hudsonville, Jenison, Comstock Park, Rockford, Allendale, and East Grand Rapids." },
+  { question: "Is Bernal Landscape Management insured?", answer: "Yes. Bernal Landscape Management is fully insured for residential and commercial work in Michigan. We are also BBB accredited with an A+ rating." },
+  { question: "How do I get a free estimate?", answer: "You can request a free estimate by calling us at 616-477-1221, emailing salvador@bernallandscape.com, or filling out the contact form on our website. You can also book a quote visit directly on Salvador's calendar." },
+  { question: "How long has Bernal Landscape been in business?", answer: "Bernal Landscape Management was founded in 2010 by Salvador Bernal. We are a family-owned and operated company with over 15 years of experience serving West Michigan." },
+  { question: "What are Bernal Landscape's business hours?", answer: "We are open Monday through Saturday, 6:00 AM to 6:00 PM. We are closed on Sundays." },
+];
 
 const FEATURED_CATEGORIES: Array<{
   label: string;
@@ -102,11 +116,11 @@ export default function Home() {
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-terracotta sm:text-sm">
               Family Owned &amp; Operated · West Michigan
             </p>
-            <h1 className="mt-5 max-w-4xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            <p className="mt-5 max-w-4xl font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl" aria-hidden="false">
               Proudly
               <br />
               <span className="text-terracotta">Designed for You</span>
-            </h1>
+            </p>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
               Family-owned landscape design, hardscaping, and property care
               serving Grand Rapids and West Michigan for over a decade.
@@ -171,9 +185,9 @@ export default function Home() {
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-terracotta">
                   Expert &amp; Professional
                 </p>
-                <h2 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-5xl">
-                  Our Services
-                </h2>
+                <h1 className="mt-3 font-serif text-3xl font-semibold text-forest md:text-5xl">
+                  Landscaping Services in Grand Rapids &amp; West Michigan
+                </h1>
                 <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
                   As landscape specialists, we&apos;re dedicated to providing
                   reliable, professional service that meets all of your needs.
@@ -602,6 +616,48 @@ export default function Home() {
             </ScrollReveal>
           </div>
         </section>
+
+        {/* FAQ */}
+        <section className="border-t border-forest/10 bg-cream py-20">
+          <div className="mx-auto max-w-3xl px-4">
+            <h2 className="text-center font-serif text-3xl font-semibold text-forest md:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <div className="mt-10 space-y-4">
+              {HOMEPAGE_FAQ.map((q) => (
+                <details
+                  key={q.question}
+                  className="group rounded-2xl border border-charcoal/10 bg-white p-6 shadow-sm"
+                >
+                  <summary className="cursor-pointer list-none font-semibold text-charcoal">
+                    {q.question}
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-charcoal/80">
+                    {q.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: HOMEPAGE_FAQ.map((item) => ({
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: item.answer,
+                },
+              })),
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
 
       </main>
 

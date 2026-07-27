@@ -3,12 +3,12 @@ import { SITE } from "@/lib/site";
 export function LocalBusinessJsonLd() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "LandscapeService",
+    "@type": "HomeAndConstructionBusiness",
     name: SITE.name,
-    image: `${SITE.url}/og-image.jpg`,
-    "@id": SITE.url,
+    image: `${SITE.url}/gallery/20250411_172500.jpg`,
+    "@id": `${SITE.url}/#business`,
     url: SITE.url,
-    telephone: SITE.phone.display,
+    telephone: SITE.phone.e164,
     email: SITE.email.display,
     priceRange: "$$",
     address: {

@@ -5,6 +5,53 @@ import { PageHero } from "@/components/page-hero";
 import { CtaSection } from "@/components/cta-section";
 import { SERVICES, type Service } from "@/lib/services";
 import { pickGallery } from "@/lib/gallery";
+import { SITE } from "@/lib/site";
+
+function ServiceJsonLd({ service }: { service: Service }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    provider: { "@id": `${SITE.url}/#business` },
+    areaServed: {
+      "@type": "State",
+      name: "Michigan",
+    },
+    serviceType: service.title,
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+function FaqJsonLd({ faq }: { faq: { question: string; answer: string }[] }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+      }}
+    />
+  );
+}
 
 type ServicePageTemplateProps = {
   service: Service;
@@ -16,6 +63,10 @@ export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
 
   return (
     <>
+      <ServiceJsonLd service={service} />
+      {service.faq && service.faq.length > 0 && (
+        <FaqJsonLd faq={service.faq} />
+      )}
       <PageHero
         title={service.title}
         eyebrow="Our Services"
