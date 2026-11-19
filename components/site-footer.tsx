@@ -131,6 +131,10 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-white/10 py-6 text-center text-xs text-cream/55">
         © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+        <span className="mx-2">·</span>
+        <Link href="/privacy" className="transition hover:text-terracotta">Privacy</Link>
+        <span className="mx-2">·</span>
+        <a href="#" data-aa-cookie-settings hidden className="transition hover:text-terracotta">Cookie settings</a>
       </div>
       <div className="bg-terracotta py-3 text-center">
         <a
