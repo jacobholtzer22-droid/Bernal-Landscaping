@@ -58,6 +58,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script defer src="https://www.alignandacquire.com/t/s/bernal-landscape.js"></script>
+      </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         {children}
         <LocalBusinessJsonLd />
